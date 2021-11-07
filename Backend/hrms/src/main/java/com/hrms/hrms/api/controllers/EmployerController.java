@@ -3,6 +3,7 @@ package com.hrms.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +17,7 @@ import com.hrms.hrms.entities.concretes.Employer;
 
 @RequestMapping("/api/employers")
 @RestController
-public class EmployerController {
+public class EmployerController extends BaseController {
 	
 	private EmployerService employerService;
 	
@@ -27,14 +28,9 @@ public class EmployerController {
 	}
 	
 	@GetMapping("/getall")
-	 public DataResult<List<Employer>> getAll(){
+	 public ResponseEntity<?> getAll(){
 		
-		return this.employerService.getAll();
+		return Ok(()->this.employerService.getAll());
 	}
 	
-	@PostMapping("/add")
-	public Result add(@RequestBody Employer employer) {
-		
-		return this.employerService.add(employer);
-	}
 }

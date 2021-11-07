@@ -3,6 +3,7 @@ package com.hrms.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +17,7 @@ import com.hrms.hrms.entities.concretes.JobSeeker;
 
 @RequestMapping("/api/jobseekrs")
 @RestController
-public class JobSeekerController {
+public class JobSeekerController extends BaseController{
 	
 	private JobSeekerService jobSeekerService;
 	
@@ -27,13 +28,10 @@ public class JobSeekerController {
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<JobSeeker>> getAll(){
-		 return this.jobSeekerService.getAll();
+	public ResponseEntity<?> getAll(){
+		 return Ok(()->this.jobSeekerService.getAll());
 		 
 	}
 	
-	@PostMapping("/add")
-	public Result add(@RequestBody JobSeeker jobSeeker) {
-		return this.jobSeekerService.add(jobSeeker);
-	}
+	
 }

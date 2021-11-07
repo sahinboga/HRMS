@@ -9,7 +9,7 @@ import com.hrms.hrms.entities.dtos.UserForLoginDto;
 
 public interface AuthService{
 	
-	DataResult<User> login(UserForLoginDto loginDto);
-	Result registerForJobSeeker(JobSeeker jobSeeker);
-	Result registerForEmployer(Employer employer);
+	DataResult<User> login(UserForLoginDto loginDto) throws Exception;
+	Result registerForJobSeeker(JobSeeker jobSeeker) throws Exception;
+	Result registerForEmployer(Employer employer) throws Exception;
 }

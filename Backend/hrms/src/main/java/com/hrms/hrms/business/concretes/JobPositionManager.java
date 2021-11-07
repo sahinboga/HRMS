@@ -10,6 +10,7 @@ import com.hrms.hrms.core.utilities.result.DataResult;
 import com.hrms.hrms.core.utilities.result.ErrorDataResult;
 import com.hrms.hrms.core.utilities.result.Result;
 import com.hrms.hrms.core.utilities.result.SuccessDataResult;
+import com.hrms.hrms.core.utilities.result.SuccessResult;
 import com.hrms.hrms.dataAccess.abstracts.JobPositionDao;
 import com.hrms.hrms.entities.concretes.JobPosition;
 
@@ -32,19 +33,17 @@ public class JobPositionManager implements JobPositionService {
 
 	@Override
 	public DataResult<JobPosition> add(JobPosition jobPosition) {
-		try {
-			JobPosition jp =this.jobPositionDao.save(jobPosition);
-			return new SuccessDataResult<JobPosition>(jp,"İş pozisyonu eklendi.");
-		}catch(Exception e) {
-			return new ErrorDataResult<JobPosition>(null,e.getMessage());
-		}
+	
+		JobPosition jp =this.jobPositionDao.save(jobPosition);
+		return new SuccessDataResult<JobPosition>(jp,"İş pozisyonu eklendi.");
 		
 	}
 
 	@Override
-	public Result delete(JobPosition entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public Result delete(JobPosition jobPosition) {
+		
+		this.jobPositionDao.delete(jobPosition);
+		return new SuccessResult("İş pozisyonu silindi");
 	}
 
 	@Override

@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hrms.hrms.business.abstracts.AuthService;
+import com.hrms.hrms.business.abstracts.EmployerService;
 import com.hrms.hrms.business.abstracts.JobSeekerService;
 import com.hrms.hrms.business.abstracts.UserService;
 import com.hrms.hrms.core.utilities.business.BusinessRules;
 import com.hrms.hrms.core.utilities.result.DataResult;
 import com.hrms.hrms.core.utilities.result.ErrorDataResult;
-import com.hrms.hrms.core.utilities.result.ErrorResult;
 import com.hrms.hrms.core.utilities.result.Result;
 import com.hrms.hrms.core.utilities.result.SuccessDataResult;
 import com.hrms.hrms.core.utilities.result.SuccessResult;
@@ -24,16 +24,18 @@ public class AuthManager implements AuthService {
 	
 
 	private JobSeekerService jobSeekerService;
+	private EmployerService employerService;
 	private UserService userService;
 	
 	@Autowired
-	public AuthManager(JobSeekerService jobSeekerService,UserService userService) {
+	public AuthManager(JobSeekerService jobSeekerService,EmployerService employerService,UserService userService) {
 		super();
 		this.jobSeekerService = jobSeekerService;
+		this.employerService=employerService;
 		this.userService=userService;
 	}
 	@Override
-	public DataResult<User> login(UserForLoginDto loginDto) {
+	public DataResult<User> login(UserForLoginDto loginDto) throws Exception {
 		DataResult<User> UserToCheck= this.userService.getByEmail(loginDto.getEmail());
 		if(UserToCheck.getData()==null) {
 			return new ErrorDataResult<User>("E-posta hatalı!");
@@ -46,20 +48,20 @@ public class AuthManager implements AuthService {
 	}
 
 	@Override
-	public Result registerForJobSeeker(JobSeeker jobSeeker) {
+	public Result registerForJobSeeker(JobSeeker jobSeeker) throws Exception {
 		
 		// iş kuralları
-		Result result=BusinessRules.Run(this.userService.existsUserByEposta(jobSeeker.getEmail()),this.jobSeekerService.isNull(jobSeeker));
+		Result result=BusinessRules.Run(this.userService.validate(jobSeeker.getUser()),this.jobSeekerService.validate(jobSeeker));
 		if(result!=null) {
 			return result;
 		}
 		
-		DataResult<User> userAddResult= this.userService.add(jobSeeker);
+		DataResult<User> userAddResult= this.userService.add(jobSeeker.getUser());
 		if(!userAddResult.isSuccess()) {
 			return userAddResult;
 		}
 		
-		jobSeeker.setUserId(userAddResult.getData().getUserId());
+		jobSeeker.getUser().setUserId(userAddResult.getData().getUserId());
 		DataResult<JobSeeker> jobSeekerAddResult=this.jobSeekerService.add(jobSeeker);
 		if(!jobSeekerAddResult.isSuccess()) {
 			this.userService.delete(userAddResult.getData());
@@ -69,9 +71,25 @@ public class AuthManager implements AuthService {
 	}
 
 	@Override
-	public Result registerForEmployer(Employer employer) {
-		// TODO Auto-generated method stub
-		return null;
+	public Result registerForEmployer(Employer employer) throws Exception {
+		// iş Kuralları
+		Result result=BusinessRules.Run(this.userService.validate(employer.getUser()),this.employerService.validate(employer));
+		if(result!=null) {
+			return result;
+		}
+		
+		DataResult<User> userAddResult= this.userService.add(employer.getUser());
+		if(!userAddResult.isSuccess()) {
+			return userAddResult;
+		}
+		
+		employer.getUser().setUserId(userAddResult.getData().getUserId());
+		DataResult<Employer> employerAddResult=this.employerService.add(employer);
+		if(!employerAddResult.isSuccess()) {
+			this.userService.delete(userAddResult.getData());
+			return employerAddResult;
+		}
+		return new SuccessResult("Kayıt başarılı.");
 	}
 
 }

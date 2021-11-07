@@ -5,5 +5,6 @@ import com.hrms.hrms.entities.concretes.JobSeeker;
 
 public interface JobSeekerService extends CrudService<JobSeeker> {
 	
-	Result isNull(JobSeeker jobSeeker);
+	Result isNull(JobSeeker jobSeeker) throws Exception;
+	Result validate(JobSeeker jobSeeker) throws Exception;
 }

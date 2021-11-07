@@ -1,0 +1,261 @@
+:root{
+  --navbar-height:50px;
+  --dashboard-color: rgb(54 49 70);;
+  --sidebar-btn-color:rgb(84 83 90);
+}
+
+h1{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+.dashboard_navbar{
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--dashboard-color);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--navbar-height);
+}
+
+.dashboard_logo{
+  display: flex;
+}
+.dashboard_logo h2{
+  color: aqua;
+  font-weight: 900;
+  font-size: 24px;
+}
+.dashboard_top_items{
+  display: flex;
+}
+
+
+/* sidebar css */
+.dashboard_sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: var(--navbar-height);
+  left: 0;
+  background-color: var(--dashboard-color);
+  overflow-x: hidden;
+  padding-top: 20px;
+  border-top: 1px solid gray;
+}
+.dashboard_main{
+  margin-top: var(--navbar-height);
+  margin-left: 160px;
+}
+.sidebar_btn{
+  background-color:var(--dashboard-color) !important ;
+  border-radius: 0 !important;
+  color: rgb(226, 226, 226) !important;
+  text-align: left !important;
+}
+.sidebar_btn:hover{
+  background-color: var(--sidebar-btn-color) !important;
+  opacity: .9;
+  color: #fff !important;
+}
+.sidebar_btn:focus,.sidebar_btn:active,.sidebar_btn.active{
+  background-color: var(--sidebar-btn-color) !important;
+  color: #fff !important;
+}
+
+.ui.inverted.teal.table {
+  background-color: #434c64!important;
+  color: #fff!important;
+}
+
+.dimmed.dimmable > .ui.animating.dimmer, .dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ui.modal,
+.ui.active.modal {
+  margin: 0 auto!important;
+  top: auto !important;
+  left: auto !important;
+  transform-origin: center !important;
+  transition: all ease .5s;
+  height: auto;
+}
+
+.scrolling{
+  max-height: 250px;
+  position: relative;
+  overflow-y: scroll;
+}
+
+/*iş ilanı detay css*/
+.job-detail-header{
+  background-color: rgb(167 193 215 / 30%);
+}
+.company-logo img{
+  border-radius: 8px;
+}
+.info-detail >div{
+  margin: 4px 0px;
+  padding-left: 20px;
+}
+.meta-detail>div{
+  padding-right: 15px;
+}
+.job-content-detail{
+  padding-top: 50px;
+}
+
+body{
+  font-family: 'Sofia Pro', sans-serif;
+                                                
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #77838F;
+  background: #fff !important;
+  overflow-x: hidden;
+}
+
+.action{
+  text-align: right !important;
+}
+.deadline{
+  margin-bottom: 15px;
+}
+.action .btn{
+  color: white;
+  min-height:40px;
+  border-radius: 7px;
+}
+.btn-apply{
+  background-color:#1967D2;
+  min-width: 150px;
+  font-size: 20px;
+}
+
+.btn-apply:hover{
+  background-color: #0d4da7;
+
+}
+
+.btn-favorite{
+  background-color: rgb(167 193 215 / 50%);
+  
+}
+
+.none-list{
+  list-style: none;
+  padding: 0 !important;
+}
+
+.widget-icon{
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+}
+
+.widget{
+  background-color: rgb(167 193 215 / 30%);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.btn-website{
+  color: #1967D2;
+  background-color: rgba(25, 103, 210, 0.07);
+  width: 100%;
+  min-height: 40px;
+  border-radius: 7px;
+}
+.btn-website:hover{
+  background-color: #1967D2;
+  color: white;
+}
+
+.top-right{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/*özgeçmiş css*/
+
+.resume{
+  background-color: rgb(230, 230, 230)
+}
+.content-header {
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 13px 15px 0 rgb(0 0 0 / 2%);
+}
+
+.title {
+  color: #666;
+  font-size: 20px;
+  text-align: left;
+}
+
+.content-body {
+  width: 100%;
+  padding: 20px 30px;
+  box-sizing: border-box;
+  background-color: #f8f9fa!important;
+  border-radius:0 0 10px 10px ;
+}
+
+.container {
+  padding: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.info-msg-header{
+    font-size: 12px;
+    color: #999;
+    display: block;
+    line-height: 12px;
+}
+
+.info-msg-text{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+    word-wrap: break-word;
+    display: block;
+}
+
+.info-content>div{
+  margin: 15px 0;
+}
+
+.profile-photo{
+  background-color: #1967D2;
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  border-radius: 100%;
+}
+
+.logo{
+  width: 150px;
+  height: 150px;
+  margin: auto;
+}
+
+.btn-added{
+  color: #666;
+  background-color: #fff;
+  font-size: medium;
+  border-radius: 10px;
+  border: 1px solid gray;
+}

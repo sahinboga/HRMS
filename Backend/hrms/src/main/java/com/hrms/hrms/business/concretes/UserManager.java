@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hrms.hrms.business.abstracts.UserService;
+import com.hrms.hrms.core.utilities.business.BusinessRules;
 import com.hrms.hrms.core.utilities.result.DataResult;
 import com.hrms.hrms.core.utilities.result.ErrorDataResult;
 import com.hrms.hrms.core.utilities.result.ErrorResult;
@@ -33,20 +34,11 @@ public class UserManager implements UserService{
 		return new SuccessDataResult<List<User>>(this.userDao.findAll(),"Kullanıcılar listelendi");
 	}
 	@Override
-	public DataResult<User> add(User user) {
-		try {
-			user.setPassword(HashingHelper.CreatePasswordHash(user.getPassword()));
-		} catch (NoSuchAlgorithmException e1) {
-			return new ErrorDataResult<User>("Hata oluştu");
-			
-		}
-		try {
-			User u= this.userDao.save(user);
-			
-			return new SuccessDataResult<User>(u,"Kullanıcı eklendi");
-		}catch(Exception e) {
-			return new ErrorDataResult<User>(null,e.getMessage());
-		}
+	public DataResult<User> add(User user) throws Exception {
+		user.setPassword(HashingHelper.CreatePasswordHash(user.getPassword()));
+		User u= this.userDao.save(user);
+		
+		return new SuccessDataResult<User>(u,"Kullanıcı eklendi");
 		
 	}
 	@Override
@@ -63,13 +55,8 @@ public class UserManager implements UserService{
 	@Override
 	
 	public Result delete(User user) {
-		try {
-			this.userDao.delete(user);
-			return new SuccessResult("Kullanıcı silindi");
-		}catch(Exception e) {
-			return new ErrorResult(e.getMessage());
-		}
-		
+		this.userDao.delete(user);
+		return new SuccessResult("Kullanıcı silindi");
 	}
 	@Override
 	public DataResult<User> update(User entity) {
@@ -80,6 +67,14 @@ public class UserManager implements UserService{
 	public DataResult<User> getByEmail(String email) {
 		// TODO Auto-generated method stub
 		return new SuccessDataResult<User>(this.userDao.getByEmail(email));
+	}
+	@Override
+	public Result validate(User user) throws Exception {
+		Result result =BusinessRules.Run(existsUserByEposta(user.getEmail()));
+		if(result!=null) {
+			return result;
+		}
+		return new SuccessResult();
 	}
 
 }

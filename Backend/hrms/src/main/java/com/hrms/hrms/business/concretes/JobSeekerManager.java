@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hrms.hrms.business.abstracts.JobSeekerService;
+import com.hrms.hrms.core.utilities.business.BusinessRules;
 import com.hrms.hrms.core.utilities.result.DataResult;
 import com.hrms.hrms.core.utilities.result.ErrorDataResult;
 import com.hrms.hrms.core.utilities.result.ErrorResult;
@@ -34,12 +35,8 @@ public class JobSeekerManager implements JobSeekerService {
 
 	@Override
 	public DataResult<JobSeeker> add(JobSeeker jobSeeker) {
-		try {
-			JobSeeker js= this.jobSeekerDao.save(jobSeeker);
-			return new SuccessDataResult<JobSeeker>(js,"İş arayan eklendi");
-		}catch(Exception e) {
-			return new ErrorDataResult<JobSeeker>(null,e.getMessage());
-		}
+		JobSeeker js= this.jobSeekerDao.save(jobSeeker);
+		return new SuccessDataResult<JobSeeker>(js,"İş arayan eklendi");
 		
 	}
 
@@ -47,7 +44,7 @@ public class JobSeekerManager implements JobSeekerService {
 	public Result isNull(JobSeeker jobSeeker) {
 		
 		if(jobSeeker.getFirstName().isBlank() || jobSeeker.getLastName().isBlank()
-			|| jobSeeker.getEmail().isBlank() || jobSeeker.getPassword().isBlank())
+			|| jobSeeker.getUser().getEmail().isBlank() || jobSeeker.getUser().getPassword().isBlank())
 		{
 			return new ErrorResult("Tüm alanlar zorunludur!");
 		}
@@ -64,6 +61,15 @@ public class JobSeekerManager implements JobSeekerService {
 	public DataResult<JobSeeker> update(JobSeeker entity) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Result validate(JobSeeker jobSeeker) throws Exception {
+		Result result=BusinessRules.Run(isNull(jobSeeker));
+		if(result!=null) {
+			return result;
+		}
+		return new SuccessResult();
 	}
 
 }
