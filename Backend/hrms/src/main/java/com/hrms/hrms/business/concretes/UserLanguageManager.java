@@ -9,6 +9,7 @@ import com.hrms.hrms.business.abstracts.UserLanguageService;
 import com.hrms.hrms.core.utilities.result.DataResult;
 import com.hrms.hrms.core.utilities.result.Result;
 import com.hrms.hrms.core.utilities.result.SuccessDataResult;
+import com.hrms.hrms.core.utilities.result.SuccessResult;
 import com.hrms.hrms.dataAccess.abstracts.UserLanguageDao;
 import com.hrms.hrms.entities.concretes.UserLanguage;
 
@@ -26,7 +27,7 @@ public class UserLanguageManager implements UserLanguageService{
 	@Override
 	public DataResult<List<UserLanguage>> getAll() throws Exception {
 		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<UserLanguage>>(this.userLanguageDao.findAll(),"Kullanıcı dili eklendi");
+		return new SuccessDataResult<List<UserLanguage>>(this.userLanguageDao.findAll(),"Kullanıcı dili listelendi");
 	}
 
 	@Override
@@ -38,14 +39,19 @@ public class UserLanguageManager implements UserLanguageService{
 
 	@Override
 	public Result delete(UserLanguage entity) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		this.userLanguageDao.delete(entity);
+		return new SuccessResult("Dil Silindi");
 	}
 
 	@Override
 	public DataResult<UserLanguage> update(UserLanguage entity) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		UserLanguage current=this.userLanguageDao.getById(entity.getUserLanguageid());
+		current.setLanguage(entity.getLanguage());
+		current.setLevel(entity.getLevel());
+		this.userLanguageDao.save(current);
+		return new SuccessDataResult<UserLanguage>(null,"Dil güncellendi");
 	}
 
 }

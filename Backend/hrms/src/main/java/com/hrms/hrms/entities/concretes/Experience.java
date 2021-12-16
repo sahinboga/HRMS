@@ -42,6 +42,10 @@ public class Experience {
 	private JobPosition jobPosition;
 	
 	@ManyToOne()
+	@JoinColumn(name="sector_id")
+	private CompanySector companySector;
+	
+	@ManyToOne()
 	@JoinColumn(name="city_id")
 	private City city;
 	

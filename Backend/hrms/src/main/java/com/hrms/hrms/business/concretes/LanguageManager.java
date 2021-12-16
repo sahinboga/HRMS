@@ -31,8 +31,10 @@ public class LanguageManager implements LanguageService{
 
 	@Override
 	public DataResult<Language> add(Language entity) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+
+		Language lang=this.languageDao.save(entity);
+		
+		return new SuccessDataResult<Language>(lang,"Dil Eklendi");
 	}
 
 	@Override

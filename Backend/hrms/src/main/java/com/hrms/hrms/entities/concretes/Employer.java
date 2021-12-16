@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.hrms.hrms.entities.Image;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,4 +38,10 @@ public class Employer{
 	
 	@Column(name="phone")
 	private String phone;
+	
+	@ManyToOne
+	@JoinColumn(name="image_id")
+	private Image image;
+	
+	
 }

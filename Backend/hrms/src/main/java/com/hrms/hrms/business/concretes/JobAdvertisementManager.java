@@ -61,15 +61,21 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	@Override
 	public DataResult<List<JobAdvertisement>> getByIsActiveAndEmployer_Id(boolean isActive, int employerId) throws Exception {
 		
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByIsActiveAndEmployer_Id(isActive, employerId),"Listelendi");
+		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByIsActiveAndEmployer_Id(isActive?1:0, employerId),"Listelendi");
 	}
 
 	@Override
 	public DataResult<JobAdvertisement> passiveJobAdvertisement(int jobAdvertisementId, boolean active) throws Exception {
 		
 		JobAdvertisement current=jobAdvertisementDao.getById(jobAdvertisementId);
-		current.setActive(active);
-		return new SuccessDataResult<JobAdvertisement>(this.jobAdvertisementDao.save(current),"İlan pasif hele getirildi");
+		current.setIsActive(active?1:0);
+		return new SuccessDataResult<JobAdvertisement>(this.jobAdvertisementDao.save(current),active?"İlan aktif hale getirildi":"İlan pasif hale getirildi");
+	}
+	
+	@Override
+	public void updateIsActive(boolean isActive, int id) throws Exception{
+		// TODO Auto-generated method stub
+		this.jobAdvertisementDao.updateIsActive(id, isActive);
 	}
 
 	@Override
@@ -87,5 +93,7 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		Page<JobAdvertisement> jobAdvertisement=this.jobAdvertisementDao.getFilteringAndPage(jobAdvertFilter, pageable);
 		return new SuccessDataResult<List<JobAdvertisement>>(jobAdvertisement.getContent(),jobAdvertisement.getTotalElements()+"");
 	}
+
+	
 
 }

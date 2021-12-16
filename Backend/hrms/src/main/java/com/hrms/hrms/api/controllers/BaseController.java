@@ -12,8 +12,9 @@ public class BaseController {
 			T t = call.call();
 			return ResponseEntity.ok(t);
 		}catch(Exception e) {
+			System.out.println(e.getMessage());
 			//TODO: Loglama işlemlerini burada hallet.
-			return ResponseEntity.badRequest().body("hata"); //hata oluştuğunda kullanıcının göreceği mesaj
+			return ResponseEntity.badRequest().body(e.getMessage()); //hata oluştuğunda kullanıcının göreceği mesaj
 		}
 	}
 }

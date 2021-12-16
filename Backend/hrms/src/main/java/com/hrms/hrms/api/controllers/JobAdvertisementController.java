@@ -45,7 +45,7 @@ public class JobAdvertisementController extends BaseController{
 		return Ok(()-> this.jobAdvertisementService.getByIsActiveAndEmployer_Id(isActive, employerId));
 	}
 	
-	@GetMapping("/passivejobadvertisement")
+	@PostMapping("/passivejobadvertisement")
 	public ResponseEntity<?> passiveJobAdvertisement(int jobAdvertisementId, boolean active){
 		return Ok(()-> this.jobAdvertisementService.passiveJobAdvertisement(jobAdvertisementId,active));
 	}

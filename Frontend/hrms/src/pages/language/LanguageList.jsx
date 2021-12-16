@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Table } from 'semantic-ui-react'
 import PageHeader from '../../components/PageHeader'
-import LanguageService from '../../services/lanaguageService'
+import LanguageService from '../../services/languageService'
 
 export default function LanguageList() {
 

@@ -36,7 +36,8 @@ export default function JobAdvertismentList() {
             cityId: Helper.StrToArray(query.get("c")),
             jobPositionId: Helper.StrToArray(query.get("jp")),
             workTypeId: Helper.StrToArray(query.get("wt")),
-            companySectorId: Helper.StrToArray(query.get("cs"))
+            companySectorId: Helper.StrToArray(query.get("cs")),
+            status: Helper.StrToArray(query.get("s")),
         }
 
         dispatch(getJobAdvertisementFilterAndPage(activePage, pageSize, filter))
@@ -61,7 +62,7 @@ export default function JobAdvertismentList() {
                 </div>
                 <div className="col-md-8 mt-4">
                     <div>
-                        {jobAdvertisements.data.map(jobAdvert => (
+                        {jobAdvertisements?.data.map(jobAdvert => (
                             <JobAdvertPost jobAdvert={jobAdvert} />
                         ))
                         }
@@ -87,7 +88,7 @@ export default function JobAdvertismentList() {
                                     onChange={handlePageSizeOnChange}
                                     defaultValue={1}
                                     selection />
-                                {/* <Label pointing="below">Sayfada Görüntülenecek İlan Sayısı</Label> */}
+                            
                             </div>
                         </div>
                     </div>

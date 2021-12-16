@@ -26,7 +26,7 @@ public class UserLanguage {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="user_language_id")
-	private int UserLanguageid;
+	private int userLanguageid;
 	
 
 	@ManyToOne()
@@ -37,4 +37,7 @@ public class UserLanguage {
 	@ManyToOne()
 	@JoinColumn(name="language_id")
 	private Language language;
+	
+	@Column(name="language_level")
+	private int level;
 }

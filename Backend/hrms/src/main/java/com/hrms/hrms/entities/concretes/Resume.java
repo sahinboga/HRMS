@@ -10,12 +10,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.hrms.hrms.entities.Image;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -51,6 +53,10 @@ public class Resume {
 	
 	@Column(name="summary")
 	private String summary;
+	
+	@ManyToOne
+	@JoinColumn(name="image_id")
+	private Image image;
 	
 	@JsonProperty(access = Access.READ_ONLY)
 	@OneToMany(mappedBy = "resume")

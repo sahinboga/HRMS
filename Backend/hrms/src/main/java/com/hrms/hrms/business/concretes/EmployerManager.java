@@ -14,7 +14,10 @@ import com.hrms.hrms.core.utilities.result.Result;
 import com.hrms.hrms.core.utilities.result.SuccessDataResult;
 import com.hrms.hrms.core.utilities.result.SuccessResult;
 import com.hrms.hrms.dataAccess.abstracts.EmployerDao;
+import com.hrms.hrms.entities.Image;
 import com.hrms.hrms.entities.concretes.Employer;
+import com.hrms.hrms.entities.concretes.Resume;
+import com.hrms.hrms.entities.concretes.User;
 
 @Service
 public class EmployerManager implements EmployerService {
@@ -48,8 +51,14 @@ public class EmployerManager implements EmployerService {
 
 	@Override
 	public DataResult<Employer> update(Employer entity) {
-		// TODO Auto-generated method stub
-		return null;
+		Employer current=this.employerDao.getById(entity.getId());
+		
+		current.setCompanyName(entity.getCompanyName());
+		current.setPhone(entity.getPhone());
+		current.setWebsite(entity.getWebsite());
+		//current.setUser(new User());
+		this.employerDao.save(current);
+		return new SuccessDataResult<Employer>(null,"Güncellendi");
 	}
 
 	@Override
@@ -71,5 +80,39 @@ public class EmployerManager implements EmployerService {
 		}
 		return new SuccessResult();
 	}
+
+	@Override
+	public DataResult<Employer> getEmployerById(int employerId) throws Exception {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<Employer>(this.employerDao.getEmployerById(employerId),"İşveren getirildi");
+	}
+
+	@Override
+	public Result uploadLogo(int id, Image image) {
+			try{
+					
+					Employer current=this.employerDao.getEmployerById(id);
+					if(current == null) {
+						return new ErrorResult("İşveren bulunamadı");
+					}
+					current.setImage(image);
+					this.employerDao.save(current);
+					return new SuccessResult("Fotoğraf Yüklendi");
+				}catch(Exception e) {
+					return new ErrorResult("Fotoğraf yüklenirken hata oluştu");
+				}
+	}
+
+	@Override
+	public Result deleteLogo(int id) throws Exception {
+		Employer current=this.employerDao.getEmployerById(id);
+		if(current == null) {
+			return new ErrorResult("Özgeçmiş kaydı bulunamadı.");
+		}
+		current.setImage(null);
+		this.employerDao.save(current);
+		return new SuccessResult("Fotoğraf kaldırıldı.");
+	}
+	
 
 }

@@ -4,13 +4,18 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hrms.hrms.business.abstracts.UserSkillService;
 import com.hrms.hrms.core.utilities.result.DataResult;
 import com.hrms.hrms.core.utilities.result.Result;
 import com.hrms.hrms.core.utilities.result.SuccessDataResult;
+import com.hrms.hrms.core.utilities.result.SuccessResult;
 import com.hrms.hrms.dataAccess.abstracts.UserSkillDao;
+import com.hrms.hrms.entities.concretes.Resume;
+import com.hrms.hrms.entities.concretes.Skill;
 import com.hrms.hrms.entities.concretes.UserSkill;
+import com.hrms.hrms.entities.dtos.UserSkillInputDto;
 
 @Service
 public class UserSkillManager implements UserSkillService{
@@ -45,6 +50,27 @@ public class UserSkillManager implements UserSkillService{
 	public DataResult<UserSkill> update(UserSkill entity) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	@Transactional
+	public Result update(UserSkillInputDto skill) throws Exception {
+		
+		this.userSkillDao.deleteByResume(skill.getResumeId());
+		
+		for(int skillId:skill.getSkillIds()) {
+			/*
+			 ToDo: SkillId database de var mı yok mu diye kontrol et
+			 */
+			UserSkill us=new UserSkill(0, new Resume(),new Skill());
+			us.getResume().setResumeId(skill.getResumeId());
+			us.getSkill().setSkillId(skillId);
+			this.add(us);
+		}
+		
+		return new SuccessResult("Güncellendi");
+		
+		
 	}
 
 }

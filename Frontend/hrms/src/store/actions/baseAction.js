@@ -10,7 +10,9 @@ export const CallBack= async(call,dispatch,mainMethod)=>{
         else{
             toast.error(result.data.message);
         }
-        dispatch(mainMethod)
+        
+            dispatch(mainMethod)
+        
     })
     .catch(errorResult=>{
         console.log(errorResult)

@@ -5,6 +5,7 @@ import { Button } from 'semantic-ui-react'
 import DashboardNavbar from '../components/DashboardNavbar'
 import DashboardSidebar from '../components/DashboardSidebar'
 import CityList from '../pages/city/CityList'
+import JobAdvertismentList from '../pages/jobAdvertisement/JobAdvertismentList'
 import JobPositionList from '../pages/jobPosition/JobPositionList'
 import languageList from '../pages/language/LanguageList'
 import SchoolList from '../pages/school/SchoolList'
@@ -16,10 +17,11 @@ export default function AdminDashboard() {
         <div>
             <DashboardNavbar>
                 <Button>AAd</Button>
-                
+
             </DashboardNavbar>
             <DashboardSidebar>
                 <Button icon="home" content="Dashboard" className="sidebar_btn" as={NavLink} to="/admin-dashboard/home" />
+                <Button icon="briefcase" content="İş İlanları" className="sidebar_btn" as={NavLink} to="/admin-dashboard/jobadvertisements" />
                 <Button icon="search plus" content="İş Pozisyonu" className="sidebar_btn" as={NavLink} to="/admin-dashboard/job-position-list" />
                 <Button icon="settings" content="Sektörler" className="sidebar_btn" as={NavLink} to="/admin-dashboard/company-sector-list" />
                 <Button icon="star" content="Yetenek" className="sidebar_btn" as={NavLink} to="/admin-dashboard/skill-list" />
@@ -28,6 +30,9 @@ export default function AdminDashboard() {
                 <Button icon="building" content="Şehirler" className="sidebar_btn" as={NavLink} to="/admin-dashboard/city-list" />
             </DashboardSidebar>
             <main className="dashboard_main ">
+                <div>
+                    <Route path="/admin-dashboard/jobadvertisements" component={JobAdvertismentList} />
+                </div>
                 <div className="w-75 m-auto">
 
                     <Route path="/admin-dashboard/job-position-list" component={JobPositionList} />

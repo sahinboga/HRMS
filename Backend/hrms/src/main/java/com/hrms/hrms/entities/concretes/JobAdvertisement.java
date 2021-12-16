@@ -66,5 +66,5 @@ public class JobAdvertisement {
 	private LocalDate releaseDate;
 	
 	@Column(name="is_active")
-	private boolean isActive;
+	private int isActive;
 }

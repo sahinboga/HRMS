@@ -6,5 +6,5 @@ import com.hrms.hrms.entities.concretes.Resume;
 
 public interface ResumeDao extends JpaRepository<Resume, Integer>{
 	
-	Resume getResumeByResumeId(int resumeId);
+	Resume getResumeByJobSeeker_id(int jsId);
 }

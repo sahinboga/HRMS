@@ -12,8 +12,10 @@ import com.hrms.hrms.core.utilities.result.DataResult;
 import com.hrms.hrms.core.utilities.result.ErrorDataResult;
 import com.hrms.hrms.core.utilities.result.Result;
 import com.hrms.hrms.core.utilities.result.SuccessDataResult;
+import com.hrms.hrms.core.utilities.result.SuccessResult;
 import com.hrms.hrms.dataAccess.abstracts.EducationDao;
 import com.hrms.hrms.entities.concretes.Education;
+import com.hrms.hrms.entities.concretes.Resume;
 
 @Service
 public class EducationManager implements EducationService{
@@ -67,16 +69,28 @@ public class EducationManager implements EducationService{
 
 	@Override
 	public Result delete(Education entity) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		this.educationDao.delete(entity);
+		return new SuccessResult("Eğitim silindi");
 	}
 
 	@Override
 	public DataResult<Education> update(Education entity) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Education current=this.educationDao.getById(entity.getEducationId());
+		if(current==null) {
+			new ErrorDataResult<Education>("Eğitim bulunamadı");
+		}
+		
+		entity.setResume(new Resume());
+		entity.getResume().setResumeId(current.getResume().getResumeId());
+		this.educationDao.save(entity);
+		return new SuccessDataResult<Education>(null,"Eğitim güncellendi");
 	}
 
-	
+	@Override
+	public DataResult<List<Education>> getAllSorted() {
+		Sort sort=Sort.by(Sort.Direction.DESC,"graduationDate");
+		return new SuccessDataResult<List<Education>>(this.educationDao.findAll(sort),"Eğitim tarihe göre sıralandı");
+	}
+
 
 }

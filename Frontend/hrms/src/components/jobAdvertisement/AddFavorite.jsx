@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Icon } from 'semantic-ui-react'
+import StorageService from '../../services/storageService'
 import { addFavorite, deleteFavorite } from '../../store/actions/favoriteJobAdvertactions'
 import Constant from '../../utils/constants'
 
@@ -10,10 +11,10 @@ export default function AddFavorite({jobAdverts}) {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const fav= favorites.data.find(f=>f.jobAdvert.id==jobAdverts.id)
+        const fav= favorites?.data.find(f=>f.jobAdvert.id==jobAdverts?.id)
         setFavori(fav)
         console.log(fav)
-    }, [favorites.data])
+    }, [favorites]) //daha önce favorites.data vardı 
    
 
     const changeFavoriteClick=(values)=>{
@@ -27,7 +28,7 @@ export default function AddFavorite({jobAdverts}) {
             dispatch(addFavorite(values))
         }
     }
-    return (
+    return StorageService.isJobSeeker()&&(
         <span>
             <button className="btn btn-favorite" onClick={()=> changeFavoriteClick({jobAdvert:jobAdverts})}><Icon name={!!favori?"heart":"heart outline"} color="red" size="large"/></button>
         </span>

@@ -11,7 +11,10 @@ export default function FavoriteJobAdvertList() {
                 <div className="py-3">
                     {
                         favorites?.data?.map(favorite => (
-                            <JobAdvertPost jobAdvert={favorite.jobAdvert}/>
+                            <div key={favorite.favoriteId}>
+
+                                <JobAdvertPost jobAdvert={favorite.jobAdvert}/>
+                            </div>
                         ))
                     }
                 </div>

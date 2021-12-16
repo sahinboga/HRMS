@@ -15,6 +15,6 @@ public class JobAdvertFilter {
 	private List<Integer>  jobPositionId;
 	private List<Integer>  workTypeId;
 	private List<Integer>  companySectorId;
-	
+	private List<Integer> status;
 
 }

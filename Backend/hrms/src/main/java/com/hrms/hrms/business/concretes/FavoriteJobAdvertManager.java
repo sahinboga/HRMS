@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hrms.hrms.business.abstracts.FavoriteJobAdvertService;
 import com.hrms.hrms.core.utilities.result.DataResult;
+import com.hrms.hrms.core.utilities.result.ErrorDataResult;
 import com.hrms.hrms.core.utilities.result.Result;
 import com.hrms.hrms.core.utilities.result.SuccessDataResult;
 import com.hrms.hrms.core.utilities.result.SuccessResult;
@@ -32,6 +33,11 @@ public class FavoriteJobAdvertManager implements FavoriteJobAdvertService{
 
 	@Override
 	public DataResult<FavoriteJobAdvert> add(FavoriteJobAdvert entity) throws Exception {
+		FavoriteJobAdvert isFavori=this.favoriteJobAdvertDao.getByJobSeeker_IdAndJobAdvert_Id(entity.getJobSeeker().getId(), entity.getJobAdvert().getId());
+		if(isFavori!=null) {
+			
+			return new ErrorDataResult<FavoriteJobAdvert>(null,"Zaten favori olarak eklemişsiniz");
+		}
 		FavoriteJobAdvert favoriteJobAdvert= this.favoriteJobAdvertDao.save(entity);
 		return new SuccessDataResult<FavoriteJobAdvert>(favoriteJobAdvert,"Favori eklendi");
 	}

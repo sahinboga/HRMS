@@ -24,7 +24,7 @@ export default function JobSeekerDashboard() {
                 <Button icon="file alternate outline" content="Özgeçmişim" className="sidebar_btn" as={NavLink} to={url+"/resume"} />
             </DashboardSidebar>
             <main className="dashboard_main ">
-                <div className="w-7s5 m-auto">
+                <div className="m-auto">
 
                     <Route exact path={url+"/jobadvertisements"} component={JobAdvertismentList}/>
                     <Route exact path={url+"/favorite-jobadverts"} component={FavoriteJobAdvertList}/>
