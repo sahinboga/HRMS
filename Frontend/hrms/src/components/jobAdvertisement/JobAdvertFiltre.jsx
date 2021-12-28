@@ -60,7 +60,7 @@ export default function JobAdvertFiltre({ }) {
                         options={cities.data.map((x) => {
                             return { key: x.cityId, text: x.cityName, value: x.cityId }
                         })}
-
+                        search
                         onChange={handleChangeCity}
                         placeholder='Şehir seçiniz'
                         multiple

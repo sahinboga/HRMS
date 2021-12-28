@@ -31,6 +31,10 @@ export const getJobAdvertisementFilterAndPage=(pageNo,pageSize,filter)=>async(di
     }
 }
 
+export const getActiveJobAdvertisements=async(dispatch)=>{
+    CallBack(api.apply().get(apiUrl+"getactivejobadvertisement"),dispatch,getJobAdvertisementFilterAndPage)
+}
+
 export const addJobAdvert=(jobadvert)=>async(dispatch)=>{
     CallBack(api().post(apiUrl+"/add",jobadvert),dispatch,()=>{})
 }

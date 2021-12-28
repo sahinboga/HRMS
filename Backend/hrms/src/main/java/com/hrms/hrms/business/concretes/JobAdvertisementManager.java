@@ -53,7 +53,7 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	@Override
 	public DataResult<List<JobAdvertisement>> getByIsActive(boolean isActive) throws Exception{
 		
-		List<JobAdvertisement> activeJobAdList=this.jobAdvertisementDao.getByIsActive(isActive);
+		List<JobAdvertisement> activeJobAdList=this.jobAdvertisementDao.getByIsActive(isActive?1:0);
 		
 		return new SuccessDataResult<List<JobAdvertisement>>(activeJobAdList,"Aktif iş ilanları listlendi");
 	}

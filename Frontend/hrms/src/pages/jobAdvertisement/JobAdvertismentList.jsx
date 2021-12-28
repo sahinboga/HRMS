@@ -6,7 +6,8 @@ import { Dropdown, Label, Pagination } from 'semantic-ui-react'
 import JobAdvertFiltre from '../../components/jobAdvertisement/JobAdvertFiltre'
 import JobAdvertPost from '../../components/jobAdvertisement/JobAdvertPost'
 import { useQuery } from '../../hooks/useQuery'
-import { getJobAdvertisementFilterAndPage } from '../../store/actions/jobAdvertisementAction'
+import StorageService from '../../services/storageService'
+import { getActiveJobAdvertisements, getJobAdvertisementFilterAndPage } from '../../store/actions/jobAdvertisementAction'
 import Helper from '../../utils/helper'
 
 export default function JobAdvertismentList() {
@@ -40,6 +41,9 @@ export default function JobAdvertismentList() {
             status: Helper.StrToArray(query.get("s")),
         }
 
+        if(!StorageService.isAdmin()){
+            filter.status=[1]
+        }
         dispatch(getJobAdvertisementFilterAndPage(activePage, pageSize, filter))
 
     }
