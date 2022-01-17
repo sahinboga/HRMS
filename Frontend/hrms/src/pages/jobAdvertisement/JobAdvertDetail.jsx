@@ -6,18 +6,28 @@ import AddFavorite from '../../components/jobAdvertisement/AddFavorite'
 import JobAdvertisementService from '../../services/jobAdvertismentService'
 import StorageService from '../../services/storageService'
 import { passiveJobAdvert } from '../../store/actions/jobAdvertisementAction'
+import { apply } from '../../store/actions/jobApplicationActions'
+import Constant from '../../utils/constants'
 import Helper from '../../utils/helper'
 import RoleAction from '../../utils/RoleActions'
 
 
 export default function JobAdvertDetail() {
     const [jobAdverts, setJobAdverts] = useState([])
-    const jobAdvertisements = useSelector(state => state.jobAdvertisements)
+    //const jobAdvertisements = useSelector(state => state.jobAdvertisements)
+    const jobApplications = useSelector(state => state.jobApplications)
+    const [application, setApplication] = useState(null)
+
     let { id } = useParams()
     const dispatch = useDispatch()
     useEffect(() => {
         let jobAdvertisementService = new JobAdvertisementService()
         jobAdvertisementService.getById(id).then(result => setJobAdverts(result.data.data))
+    }, [])
+
+    useEffect(() => {
+        const app=jobApplications?.data.find(apl=>apl.jobAdvertisment.id==jobApplications.jobAdvertisment.id)
+        setApplication(app)
     }, [])
 
     const HandleStatusClick=(id)=>{
@@ -26,6 +36,11 @@ export default function JobAdvertDetail() {
        // setJobAdverts({...jobAdverts})
     }
     
+    const HandleApplyClick=()=>{
+        const jobApplication={jobSeeker:{id:Constant.JobSeekerId},jobAdvertisement:{id:parseInt(id)}}
+        //console.log(jobApplication)
+        dispatch(apply(jobApplication))
+    }
 
     const ActionButton = () => {
         return RoleAction({
@@ -41,7 +56,7 @@ export default function JobAdvertDetail() {
             ),
             jobseeker: (
                 <div>
-                    <button className="btn btn-apply">Başvur</button>
+                    <button className="btn btn-apply" onClick={()=>HandleApplyClick()}>Başvur</button>
                     <span className="px-2"></span>
                     <AddFavorite jobAdverts={jobAdverts} />
                 </div>
