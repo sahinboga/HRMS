@@ -10,7 +10,7 @@ export const jobApplicationTypes={
 const apiUrl="/jobapplications"
 
 export const apply=(jobApplication)=>async(dispatch)=>{
-    console.log(jobApplication)
+    //console.log(jobApplication)
     CallBack(api().post(apiUrl+"/apply",jobApplication),dispatch,()=>{})
 } 
 

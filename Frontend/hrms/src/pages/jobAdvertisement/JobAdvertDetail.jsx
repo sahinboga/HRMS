@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
+import { NavLink } from 'react-router-dom'
 import { Button, Icon, Label, List, Table } from 'semantic-ui-react'
 import AddFavorite from '../../components/jobAdvertisement/AddFavorite'
 import JobAdvertisementService from '../../services/jobAdvertismentService'
@@ -26,19 +27,18 @@ export default function JobAdvertDetail() {
     }, [])
 
     useEffect(() => {
-        const app=jobApplications?.data.find(apl=>apl.jobAdvertisment.id==jobApplications.jobAdvertisment.id)
+        const app=jobApplications?.data.find(apl=>apl.jobAdvertisement.id==jobApplications.jobAdvertisement.id)
         setApplication(app)
     }, [])
 
     const HandleStatusClick=(id)=>{
        
         dispatch(passiveJobAdvert(!jobAdverts.isActive,id))
-       // setJobAdverts({...jobAdverts})
     }
     
     const HandleApplyClick=()=>{
         const jobApplication={jobSeeker:{id:Constant.JobSeekerId},jobAdvertisement:{id:parseInt(id)}}
-        //console.log(jobApplication)
+        console.log(jobApplication)
         dispatch(apply(jobApplication))
     }
 
@@ -63,7 +63,7 @@ export default function JobAdvertDetail() {
             ),
             employer: (
                 <div>
-                    <Button positive>Güncelle</Button>
+                    <Button positive as={NavLink} to={`/employer/update-jobadvert/`+id}>Güncelle</Button>
                 </div>
             )
         })

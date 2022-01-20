@@ -8,6 +8,7 @@ import JobAdvertDetail from '../pages/jobAdvertisement/JobAdvertDetail'
 import JobAdvertismentList from '../pages/jobAdvertisement/JobAdvertismentList'
 import FavoriteJobAdvertList from '../pages/jobAdvertisement/FavoriteJobAdvertList'
 import ResumePage from '../pages/resume/ResumePage'
+import JobSeekerJobApplication from '../pages/jobSeeker/JobSeekerJobApplication'
 
 export default function JobSeekerDashboard() {
 
@@ -22,12 +23,15 @@ export default function JobSeekerDashboard() {
                 <Button icon="briefcase" content="İş İlanları" className="sidebar_btn" as={NavLink} to={url+"/jobadvertisements"} />
                 <Button icon="heart outline" content="Favorilerim" className="sidebar_btn" as={NavLink} to={url+"/favorite-jobadverts"} />
                 <Button icon="file alternate outline" content="Özgeçmişim" className="sidebar_btn" as={NavLink} to={url+"/resume"} />
+                <Button icon="file alternate outline" content="Başvurularım" className="sidebar_btn" as={NavLink} to={url+"/all-job-application"} />
+                
             </DashboardSidebar>
             <main className="dashboard_main ">
                 <div className="m-auto">
 
                     <Route exact path={url+"/jobadvertisements"} component={JobAdvertismentList}/>
                     <Route exact path={url+"/favorite-jobadverts"} component={FavoriteJobAdvertList}/>
+                    <Route exact path={url+"/all-job-application"} component={JobSeekerJobApplication}/>
                     <Route exact path={url+"/resume"} component={ResumePage}/>
                 </div>
                 <div>

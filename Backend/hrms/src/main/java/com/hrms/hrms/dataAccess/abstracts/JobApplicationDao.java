@@ -8,8 +8,7 @@ import com.hrms.hrms.entities.concretes.JobApplication;
 
 public interface JobApplicationDao extends JpaRepository<JobApplication, Integer> {
 	
-	JobApplication getByJobSeeker_Id(int id);
-	JobApplication getByJobAdvertisement_Id(int id);
+	boolean existsByJobSeeker_IdAndJobAdvertisement_Id(int jobSeekerId,int jobAdvertId);
 	List<JobApplication> getAllByJobAdvertisement_Id(int id);
 	List<JobApplication> getAllByJobSeeker_Id(int id);
 }

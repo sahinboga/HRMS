@@ -52,9 +52,8 @@ public class JobApplicationManager implements JobApplicationService{
 	@Override
 	public Result apply(JobApplication application) throws Exception{
 		// TODO Auto-generated method stub
-		JobApplication jobAdvert=this.jobApplicationDao.getByJobAdvertisement_Id(application.getJobAdvertisement().getId());
-		JobApplication jobSeeker=this.jobApplicationDao.getByJobSeeker_Id(application.getJobSeeker().getId());
-		if(jobAdvert!=null && jobSeeker!=null) {
+		
+		if(this.jobApplicationDao.existsByJobSeeker_IdAndJobAdvertisement_Id(application.getJobSeeker().getId(), application.getJobAdvertisement().getId())) {
 			return new ErrorResult("Bu ilana zaten başvuru yaptınız");
 		}
 		this.jobApplicationDao.save(application);

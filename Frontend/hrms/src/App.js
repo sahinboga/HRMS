@@ -19,6 +19,7 @@ import { getJobSeekerFavorite } from './store/actions/favoriteJobAdvertactions';
 import Constant from './utils/constants';
 import { getResume } from './store/actions/resumeActions';
 import { getEmployer } from './store/actions/employerActions';
+import { getAllByJobSeekerId, getAllByJobSeekerJobApplication } from './store/actions/jobSeekerJobApplicationAction';
 
 
 function App() {
@@ -28,11 +29,11 @@ function App() {
     dispatch(getAllSkills)
     dispatch(getAllSchools)
     dispatch(getAllCity)
-    // dispatch(getAllJobAdvertisments)
     dispatch(getAllSectors)
     dispatch(getJobSeekerFavorite(Constant.JobSeekerId))
     dispatch(getResume(Constant.JobSeekerId))
     dispatch(getEmployer(Constant.employerId))
+    dispatch(getAllByJobSeekerJobApplication(Constant.JobSeekerId))
    
   }, [])
   return (

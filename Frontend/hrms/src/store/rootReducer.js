@@ -6,6 +6,7 @@ import favoriteJobAdvertsReducer from "./reducers/favoriteJobAdvertReducer";
 import jobAdvertismentReducer from "./reducers/jobAdvertismentReducer";
 import jobApplicationReducer from "./reducers/jobApplicationReducer";
 import jobPositionReducer from "./reducers/jobPositionReducer";
+import jobSeekerJobApplicationReducer from "./reducers/jobSeekerJobApplicationReducer";
 import resumeReducer from "./reducers/resumeReducer";
 import schoolReducer from "./reducers/schoolReducer";
 import skillReducer from "./reducers/skillReducer";
@@ -21,6 +22,7 @@ const rootReducer= combineReducers({
     favorites:favoriteJobAdvertsReducer,
     resume:resumeReducer,
     employers:employerReducer,
-    jobApplications:jobApplicationReducer
+    jobApplications:jobApplicationReducer,
+    jobSeekerJobApplications:jobSeekerJobApplicationReducer
 })
 export default rootReducer
