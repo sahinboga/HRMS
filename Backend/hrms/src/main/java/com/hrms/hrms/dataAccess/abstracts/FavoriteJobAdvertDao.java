@@ -11,4 +11,5 @@ public interface FavoriteJobAdvertDao extends JpaRepository<FavoriteJobAdvert, I
 	
 	List<FavoriteJobAdvert>getByJobSeeker_Id(int jobSeekerId);
 	FavoriteJobAdvert getByJobSeeker_IdAndJobAdvert_Id(int jobSeekerId,int jobAdvertId);
+	FavoriteJobAdvert deleteByJobAdvert_Id(int id);
 }

@@ -61,4 +61,10 @@ public class FavoriteJobAdvertManager implements FavoriteJobAdvertService{
 		return new SuccessDataResult<List<FavoriteJobAdvert>>(this.favoriteJobAdvertDao.getByJobSeeker_Id(jobSeekerId));
 	}
 
+	@Override
+	public DataResult<FavoriteJobAdvert> deleteByJobAdvertId(int id) throws Exception {
+		this.favoriteJobAdvertDao.deleteByJobAdvert_Id(id);
+		return new SuccessDataResult<FavoriteJobAdvert>(null,"İlan Silindi");
+	}
+
 }

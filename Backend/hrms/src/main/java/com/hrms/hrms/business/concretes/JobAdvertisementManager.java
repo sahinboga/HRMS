@@ -8,8 +8,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.hrms.hrms.business.abstracts.FavoriteJobAdvertService;
 import com.hrms.hrms.business.abstracts.JobAdvertisementService;
 import com.hrms.hrms.core.utilities.result.DataResult;
+import com.hrms.hrms.core.utilities.result.ErrorDataResult;
 import com.hrms.hrms.core.utilities.result.Result;
 import com.hrms.hrms.core.utilities.result.SuccessDataResult;
 import com.hrms.hrms.core.utilities.security.JobAdvertFilter;
@@ -19,11 +21,13 @@ import com.hrms.hrms.entities.concretes.JobAdvertisement;
 public class JobAdvertisementManager implements JobAdvertisementService{
 	
 	private JobAdvertisementDao jobAdvertisementDao;
+	private FavoriteJobAdvertService favoriteJobAdvertService;
 	
 	@Autowired
-	public JobAdvertisementManager(JobAdvertisementDao jobAdvertisementDao) {
+	public JobAdvertisementManager(JobAdvertisementDao jobAdvertisementDao,FavoriteJobAdvertService favoriteJobAdvertService) {
 		super();
 		this.jobAdvertisementDao = jobAdvertisementDao;
+		this.favoriteJobAdvertService = favoriteJobAdvertService;
 	}
 
 	@Override
@@ -47,7 +51,22 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	@Override
 	public DataResult<JobAdvertisement> update(JobAdvertisement entity) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		JobAdvertisement current=this.jobAdvertisementDao.getById(entity.getId());
+		if(current==null) {
+			new ErrorDataResult<JobAdvertisement>("İş ilanı bulunamadı");
+		}
+		current.setCity(entity.getCity());
+		current.setCompanySector(entity.getCompanySector());
+		current.setWorkType(entity.getWorkType());
+		current.setDeadline(entity.getDeadline());
+		current.setReleaseDate(entity.getReleaseDate());
+		current.setJobPosition(entity.getJobPosition());
+		current.setMinSalary(entity.getMinSalary());
+		current.setMaxSalary(entity.getMaxSalary());
+		current.setMaxPerson(entity.getMaxPerson());
+		current.setJobDescription(entity.getJobDescription());
+		this.jobAdvertisementDao.save(current);
+		return new SuccessDataResult<JobAdvertisement>(null,"İş ilanı güncellendi");
 	}
 
 	@Override
@@ -65,9 +84,13 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	}
 
 	@Override
+	
 	public DataResult<JobAdvertisement> passiveJobAdvertisement(int jobAdvertisementId, boolean active) throws Exception {
 		
 		JobAdvertisement current=jobAdvertisementDao.getById(jobAdvertisementId);
+		if(!active) {
+			favoriteJobAdvertService.deleteByJobAdvertId(jobAdvertisementId);
+		}
 		current.setIsActive(active?1:0);
 		return new SuccessDataResult<JobAdvertisement>(this.jobAdvertisementDao.save(current),active?"İlan aktif hale getirildi":"İlan pasif hale getirildi");
 	}
