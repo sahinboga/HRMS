@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import cityReducer from "./reducers/cityReducer";
 import companySectorReducer from "./reducers/companySectorReducer";
+import employerJobApplicationReducer from "./reducers/employerJobApplicationReducer";
 import employerReducer from "./reducers/employerReducer";
 import favoriteJobAdvertsReducer from "./reducers/favoriteJobAdvertReducer";
 import jobAdvertismentReducer from "./reducers/jobAdvertismentReducer";
@@ -23,6 +24,7 @@ const rootReducer= combineReducers({
     resume:resumeReducer,
     employers:employerReducer,
     jobApplications:jobApplicationReducer,
-    jobSeekerJobApplications:jobSeekerJobApplicationReducer
+    jobSeekerJobApplications:jobSeekerJobApplicationReducer,
+    employerJobApplications:employerJobApplicationReducer
 })
 export default rootReducer

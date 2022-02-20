@@ -20,10 +20,13 @@ import Constant from './utils/constants';
 import { getResume } from './store/actions/resumeActions';
 import { getEmployer } from './store/actions/employerActions';
 import { getAllByJobSeekerId, getAllByJobSeekerJobApplication } from './store/actions/jobSeekerJobApplicationAction';
+import { getAllByEmployerJobApplication } from './store/actions/employerJobApplicationActions';
+import { useParams } from 'react-router';
 
 
 function App() {
   const dispatch = useDispatch()
+  const {jobAdvertId}=useParams()
   useEffect(() => {
     dispatch(getAllJobPositions)
     dispatch(getAllSkills)
@@ -34,6 +37,7 @@ function App() {
     dispatch(getResume(Constant.JobSeekerId))
     dispatch(getEmployer(Constant.employerId))
     dispatch(getAllByJobSeekerJobApplication(Constant.JobSeekerId))
+    dispatch(getAllByEmployerJobApplication(jobAdvertId))
    
   }, [])
   return (

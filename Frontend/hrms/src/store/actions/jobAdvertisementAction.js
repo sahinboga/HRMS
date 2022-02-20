@@ -43,5 +43,8 @@ export const passiveJobAdvert=(status,id)=>async(dispatch)=>{
     CallBack(api().post(apiUrl+`/passivejobadvertisement?active=${status}&jobAdvertisementId=`+id),dispatch,getJobAdvertisementFilterAndPage)
 }
 
+export const updateJobAdvert=(jobAdvert)=>async(dispatch)=>{
+    CallBack(api().put(apiUrl+"/update",jobAdvert),dispatch,()=>{})
+}
 
 
