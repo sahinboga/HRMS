@@ -13,7 +13,7 @@ export default function AddFavorite({jobAdverts}) {
     useEffect(() => {
         const fav= favorites?.data.find(f=>f.jobAdvert.id==jobAdverts?.id)
         setFavori(fav)
-        console.log(fav)
+        //console.log(fav)
     }, [favorites]) //daha önce favorites.data vardı 
    
 
