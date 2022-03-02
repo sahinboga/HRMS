@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 import { Table } from 'semantic-ui-react';
 import PageHeader from '../../components/PageHeader';
+import JobApplicationService from '../../services/jobApplicationService';
 
 export default function EmployerJobApplication() {
 
-    const { data: jobAdvertisement } = useSelector(state => state.employerJobApplications)
+    const [incomingApplication, setIncomingApplication] = useState([])
+    const {jobAdvertId}=useParams()
+
+    useEffect(() => {
+      let jobApplicationService=new JobApplicationService()
+      jobApplicationService.getAllByEmployerJobApplication(9).then(result=>setIncomingApplication(result.data.data))
+    }, [])
+    console.log(incomingApplication)
     return (
         <div>
             <PageHeader header="Gelen Başvurular" />
@@ -24,9 +33,9 @@ export default function EmployerJobApplication() {
 
                     <Table.Body>
                         {
-                            jobAdvertisement?.map(ja => (
+                            incomingApplication?.map(ja => (
                                 <Table.Row>
-                                    <Table.Cell>{ja?.jobPositon?.jobName}</Table.Cell>
+                                    <Table.Cell>{ja?.jobAdvertisement?.jobPosition?.jobName}</Table.Cell>
                                     <Table.Cell>{ja?.jobSeeker?.firstName}</Table.Cell>
                                     <Table.Cell>{ja?.jobSeeker?.user?.email}</Table.Cell>
                                     <Table.Cell textAlign="right">
