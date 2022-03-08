@@ -1,5 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router'
+import _404NotFound from '../pages/erros/_404NotFound'
+import _500InternalServer from '../pages/erros/_500InternalServer'
 import AdminDashboard from './AdminDashboard'
 import AuthDashboard from './AuthDashboard'
 import EmployerDashboard from './EmployerDashboard'
