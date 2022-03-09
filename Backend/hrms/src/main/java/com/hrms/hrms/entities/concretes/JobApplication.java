@@ -35,10 +35,15 @@ public class JobApplication {
 	@JoinColumn(name="job_seeker_id")
 	private JobSeeker jobSeeker;
 	
-	@Column(name="is_read")
+	@ManyToOne
+	@JoinColumn(name="status_id")
+	private JobApplicationStatus status;
+	
+	
+	/*@Column(name="is_read")
 	private boolean isRead;
 	
 	@Column(name="is_accept")
-	private int isAccept;
+	private int isAccept;*/
 	
 }
