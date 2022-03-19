@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.hrms.hrms.business.abstracts.ImageService;
 import com.hrms.hrms.business.abstracts.ResumeService;
 import com.hrms.hrms.core.utilities.result.DataResult;
-import com.hrms.hrms.entities.Image;
+import com.hrms.hrms.entities.concretes.Image;
 import com.hrms.hrms.entities.concretes.Resume;
 
 @RequestMapping("/api/resumes")

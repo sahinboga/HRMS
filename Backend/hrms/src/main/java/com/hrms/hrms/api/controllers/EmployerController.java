@@ -17,8 +17,8 @@ import com.hrms.hrms.business.abstracts.EmployerService;
 import com.hrms.hrms.business.abstracts.ImageService;
 import com.hrms.hrms.core.utilities.result.DataResult;
 import com.hrms.hrms.core.utilities.result.Result;
-import com.hrms.hrms.entities.Image;
 import com.hrms.hrms.entities.concretes.Employer;
+import com.hrms.hrms.entities.concretes.Image;
 
 @RequestMapping("/api/employers")
 @RestController

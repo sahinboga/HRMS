@@ -20,7 +20,6 @@ import Constant from './utils/constants';
 import { getResume } from './store/actions/resumeActions';
 import { getEmployer } from './store/actions/employerActions';
 import { getAllByJobSeekerId, getAllByJobSeekerJobApplication } from './store/actions/jobSeekerJobApplicationAction';
-import { getAllByEmployerJobApplication } from './store/actions/employerJobApplicationActions';
 import { useParams } from 'react-router';
 
 
@@ -37,7 +36,6 @@ function App() {
     dispatch(getResume(Constant.JobSeekerId))
     dispatch(getEmployer(Constant.employerId))
     dispatch(getAllByJobSeekerJobApplication(Constant.JobSeekerId))
-    dispatch(getAllByEmployerJobApplication(jobAdvertId))
    
   }, [])
   return (

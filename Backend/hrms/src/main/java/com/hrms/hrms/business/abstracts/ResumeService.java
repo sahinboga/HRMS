@@ -2,7 +2,7 @@ package com.hrms.hrms.business.abstracts;
 
 import com.hrms.hrms.core.utilities.result.DataResult;
 import com.hrms.hrms.core.utilities.result.Result;
-import com.hrms.hrms.entities.Image;
+import com.hrms.hrms.entities.concretes.Image;
 import com.hrms.hrms.entities.concretes.Resume;
 
 public interface ResumeService extends CrudService<Resume>{

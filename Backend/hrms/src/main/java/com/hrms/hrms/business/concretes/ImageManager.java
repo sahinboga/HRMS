@@ -15,7 +15,7 @@ import com.hrms.hrms.core.utilities.result.Result;
 import com.hrms.hrms.core.utilities.result.SuccessDataResult;
 import com.hrms.hrms.core.utilities.result.SuccessResult;
 import com.hrms.hrms.dataAccess.abstracts.ImageDao;
-import com.hrms.hrms.entities.Image;
+import com.hrms.hrms.entities.concretes.Image;
 
 @Service
 public class ImageManager implements com.hrms.hrms.business.abstracts.ImageService{

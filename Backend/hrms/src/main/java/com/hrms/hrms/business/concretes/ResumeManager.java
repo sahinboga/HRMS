@@ -12,7 +12,7 @@ import com.hrms.hrms.core.utilities.result.Result;
 import com.hrms.hrms.core.utilities.result.SuccessDataResult;
 import com.hrms.hrms.core.utilities.result.SuccessResult;
 import com.hrms.hrms.dataAccess.abstracts.ResumeDao;
-import com.hrms.hrms.entities.Image;
+import com.hrms.hrms.entities.concretes.Image;
 import com.hrms.hrms.entities.concretes.Resume;
 
 @Service

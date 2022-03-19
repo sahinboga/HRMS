@@ -14,8 +14,8 @@ import com.hrms.hrms.core.utilities.result.Result;
 import com.hrms.hrms.core.utilities.result.SuccessDataResult;
 import com.hrms.hrms.core.utilities.result.SuccessResult;
 import com.hrms.hrms.dataAccess.abstracts.EmployerDao;
-import com.hrms.hrms.entities.Image;
 import com.hrms.hrms.entities.concretes.Employer;
+import com.hrms.hrms.entities.concretes.Image;
 import com.hrms.hrms.entities.concretes.Resume;
 import com.hrms.hrms.entities.concretes.User;
 

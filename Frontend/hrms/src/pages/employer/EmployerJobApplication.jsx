@@ -36,7 +36,7 @@ export default function EmployerJobApplication() {
                             incomingApplication?.map(ja => (
                                 <Table.Row>
                                     <Table.Cell>{ja?.jobAdvertisement?.jobPosition?.jobName}</Table.Cell>
-                                    <Table.Cell>{ja?.jobSeeker?.firstName}</Table.Cell>
+                                    <Table.Cell>{ja?.jobSeeker?.firstName} {ja?.jobSeeker?.lastName}</Table.Cell>
                                     <Table.Cell>{ja?.jobSeeker?.user?.email}</Table.Cell>
                                     <Table.Cell textAlign="right">
                                         
