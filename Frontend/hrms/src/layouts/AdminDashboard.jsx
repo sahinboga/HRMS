@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Route } from 'react-router'
 import { NavLink } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
+import { Button, Dropdown } from 'semantic-ui-react'
 import DashboardNavbar from '../components/DashboardNavbar'
 import DashboardSidebar from '../components/DashboardSidebar'
 import CityList from '../pages/city/CityList'
@@ -13,11 +13,20 @@ import CompanySectorList from '../pages/sector/CompanySectorList'
 import SkillList from '../pages/skill/SkillList'
 
 export default function AdminDashboard() {
+
+    const [isProfileOpen, setIsProfileOpen] = useState(false)
     return (
         <div>
             <DashboardNavbar>
-                <Button>AAd</Button>
-
+                <div className='m-3'>
+                    <img className="profile-btn" width="60" height="60" src="https://jobick.dexignlab.com/xhtml/images/profile/pic1.jpg" onClick={() => setIsProfileOpen(!isProfileOpen)} />
+                    <Dropdown direction="left" open={isProfileOpen} onClick={() => setIsProfileOpen(!isProfileOpen)}>
+                        <Dropdown.Menu>
+                            <Dropdown.Item icon="setting" text="Ayarlar"/>
+                            <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" />
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </div>
             </DashboardNavbar>
             <DashboardSidebar>
                 <Button icon="home" content="Dashboard" className="sidebar_btn" as={NavLink} to="/admin-dashboard/home" />
