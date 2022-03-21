@@ -37,5 +37,9 @@ public class UserController extends BaseController{
 		return Ok(()->this.userService.add(user));
 	}
 	
+	@GetMapping("/getuser")
+	public ResponseEntity<?> getById(int userId){
+		return Ok(()->this.userService.getUserByUserId(userId));
+	}
 	
 }

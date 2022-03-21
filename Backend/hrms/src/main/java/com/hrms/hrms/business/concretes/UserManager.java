@@ -76,5 +76,10 @@ public class UserManager implements UserService{
 		}
 		return new SuccessResult();
 	}
+	@Override
+	public DataResult<User> getUserByUserId(int userId) throws Exception {
+		User user=userDao.getUserByUserId(userId);
+		return new SuccessDataResult<User>(user);
+	}
 
 }

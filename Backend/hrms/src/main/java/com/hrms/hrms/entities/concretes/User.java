@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,4 +33,8 @@ public class User {
 	@Column(name="password")
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
+	
+	@ManyToOne()
+	@JoinColumn(name="role")
+	private Role role;
 }
