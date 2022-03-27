@@ -16,6 +16,7 @@ import com.hrms.hrms.core.utilities.result.SuccessResult;
 import com.hrms.hrms.core.utilities.security.HashingHelper;
 import com.hrms.hrms.entities.concretes.Employer;
 import com.hrms.hrms.entities.concretes.JobSeeker;
+import com.hrms.hrms.entities.concretes.Role;
 import com.hrms.hrms.entities.concretes.User;
 import com.hrms.hrms.entities.dtos.UserForLoginDto;
 @Service
@@ -56,12 +57,15 @@ public class AuthManager implements AuthService {
 			return result;
 		}
 		
+		jobSeeker.getUser().setRole(Role.JOBSEEKER());
+		
 		DataResult<User> userAddResult= this.userService.add(jobSeeker.getUser());
 		if(!userAddResult.isSuccess()) {
 			return userAddResult;
 		}
 		
 		jobSeeker.getUser().setUserId(userAddResult.getData().getUserId());
+		
 		DataResult<JobSeeker> jobSeekerAddResult=this.jobSeekerService.add(jobSeeker);
 		if(!jobSeekerAddResult.isSuccess()) {
 			this.userService.delete(userAddResult.getData());
@@ -77,6 +81,8 @@ public class AuthManager implements AuthService {
 		if(result!=null) {
 			return result;
 		}
+		
+		employer.getUser().setRole(Role.EMPLOYER());
 		
 		DataResult<User> userAddResult= this.userService.add(employer.getUser());
 		if(!userAddResult.isSuccess()) {
