@@ -18,6 +18,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="roles")
 public class Role {
+	public Role(int id) {
+		this.id=id;
+		this.roleName="";
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
@@ -25,4 +29,12 @@ public class Role {
 	
 	@Column(name="role")
 	private String roleName;
+	
+	public static final Role JOBSEEKER() {
+		return new Role(3);
+	}
+	
+	public static final Role EMPLOYER() {
+		return new Role(3);
+	}
 }
