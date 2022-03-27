@@ -21,6 +21,7 @@ import { getResume } from './store/actions/resumeActions';
 import { getEmployer } from './store/actions/employerActions';
 import { getAllByJobSeekerId, getAllByJobSeekerJobApplication } from './store/actions/jobSeekerJobApplicationAction';
 import { useParams } from 'react-router';
+import { getAllRoles } from './store/actions/roleActions';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
     dispatch(getAllSchools)
     dispatch(getAllCity)
     dispatch(getAllSectors)
+    dispatch(getAllRoles)
     dispatch(getJobSeekerFavorite(Constant.JobSeekerId))
     dispatch(getResume(Constant.JobSeekerId))
     dispatch(getEmployer(Constant.employerId))
@@ -41,7 +43,7 @@ function App() {
   return (
     <div className="App">
       <ToastContainer
-      theme="colored"
+        theme="colored"
         position="top-right"
         autoClose={3000}
         hideProgressBar={false}

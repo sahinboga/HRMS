@@ -53,8 +53,8 @@ export default function EmployerProfile() {
         setLogo(fileData)
     }
 
-    const deleteLogoClick=()=>{
-        DeleteAlert("Logo",()=>dispatch(deleteLogo()))
+    const deleteLogoClick = () => {
+        DeleteAlert("Logo", () => dispatch(deleteLogo()))
     }
     return (
         <div className="">
@@ -93,7 +93,7 @@ export default function EmployerProfile() {
                                                                 </div>
                                                                 <div className="text-center mt-2">
                                                                     <Popup content='Logo yükle' trigger={<Button positive icon='add' onClick={() => logoInputRef.current.click()} />} />
-                                                                    <Popup content='Logoyu sil' trigger={<Button negative icon='trash' onClick={()=>deleteLogoClick()}/>} />
+                                                                    <Popup content='Logoyu sil' trigger={<Button negative icon='trash' onClick={() => deleteLogoClick()} />} />
                                                                 </div>
                                                                 <input
                                                                     ref={logoInputRef}
