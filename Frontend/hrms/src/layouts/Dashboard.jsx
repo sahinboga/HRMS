@@ -35,7 +35,7 @@ export default function Dashboard() {
     }
 
     return (
-        <div>
+        <>
             <Switch>
                 <Route path={"/dashboard"} component={RoleBased}/>
                 {auth.data && (
@@ -46,6 +46,6 @@ export default function Dashboard() {
                 <Route path="/auth" component={AuthDashboard}/>
                 <Route path="/" component={HomeDashboard}/>
             </Switch>
-        </div>
+        </>
     )
 }

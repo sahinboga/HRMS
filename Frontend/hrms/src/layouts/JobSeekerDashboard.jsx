@@ -10,30 +10,32 @@ import FavoriteJobAdvertList from '../pages/jobAdvertisement/FavoriteJobAdvertLi
 import ResumePage from '../pages/resume/ResumePage'
 import JobSeekerJobApplication from '../pages/jobSeeker/JobSeekerJobApplication'
 import AuthService from '../services/authService'
+import { useDispatch } from 'react-redux'
+import { logout } from '../store/actions/authActions'
+import { useHistory } from 'react-router-dom'
 
 export default function JobSeekerDashboard() {
 
     const url = "/dashboard"
 
     const [isProfileOpen, setIsProfileOpen] = useState(false)
-    //let jobseeker=AuthService.getUser()
-
-    // useEffect(() => {
-    //   jobseeker=AuthService.getUser()
-    //   if(jobseeker==null)
-    //         return;
-    // }, [jobseeker])
+    const dispatch=useDispatch()
+    const history=useHistory()
     
+    const logoutClick=()=>{
+        dispatch(logout())
+        history.push("/auth/login")
+    }
 
     return (
-        <div>
+        <>
             <DashboardNavbar>
                 <div className='m-3'>
                     <img className="profile-btn" width="60" height="60" src="https://jobick.dexignlab.com/xhtml/images/profile/pic1.jpg" onClick={() => setIsProfileOpen(!isProfileOpen)} />
                     <Dropdown direction="left" open={isProfileOpen} onClick={() => setIsProfileOpen(!isProfileOpen)}>
                         <Dropdown.Menu>
-                            <Dropdown.Item icon="setting" text="Ayarlar" />
-                            <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" />
+                            <Dropdown.Item icon="user" text="Profilim" />
+                            <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" onClick={()=>logoutClick()}/>
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
@@ -59,6 +61,6 @@ export default function JobSeekerDashboard() {
                 </div>
 
             </main>
-        </div>
+        </>
     )
 }

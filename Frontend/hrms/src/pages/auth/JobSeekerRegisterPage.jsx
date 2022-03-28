@@ -49,27 +49,27 @@ export default function JobSeekerRegisterPage() {
                             >
                                 {props=>(
                                 <form className="form-group login-form">
-                                    <div class="form-floating mb-3">
-                                        <input type="text" name='firstName' onChange={props.handleChange} class="form-control" id="floatingInput" placeholder="name@example.com" />
-                                        <label for="floatingInput"><i class="bi bi-person"></i>İsim</label>
+                                    <div className="form-floating mb-3">
+                                        <input type="text" name='firstName' onChange={props.handleChange} className="form-control" id="floatingInput" placeholder="name@example.com" />
+                                        <label for="floatingInput"><i className="bi bi-person"></i> İsim</label>
                                     </div>
-                                    <div class="form-floating mb-3">
-                                        <input type="text" name='lastName' onChange={props.handleChange} class="form-control" id="floatingInput" placeholder="name@example.com" />
-                                        <label for="floatingInput"><i class="bi bi-person"></i>Soyisim</label>
+                                    <div className="form-floating mb-3">
+                                        <input type="text" name='lastName' onChange={props.handleChange} className="form-control" id="floatingInput" placeholder="name@example.com" />
+                                        <label for="floatingInput"><i className="bi bi-person"></i> Soyisim</label>
                                     </div>
-                                    <div class="form-floating mb-3">
-                                        <input type="email" name='user.email' onChange={props.handleChange} class="form-control" id="floatingInput" placeholder="name@example.com" />
-                                        <label for="floatingInput"><i class="bi bi-person"></i>E-mail adresi</label>
+                                    <div className="form-floating mb-3">
+                                        <input type="email" name='user.email' onChange={props.handleChange} className="form-control" id="floatingInput" placeholder="name@example.com" />
+                                        <label for="floatingInput"><i className="bi bi-envelope"></i> E-mail adresi</label>
                                     </div>
-                                    <div class="form-floating">
-                                        <input type="password" name='user.password' onChange={props.handleChange} class="form-control" id="floatingPassword" placeholder="Password" />
-                                        <label for="floatingPassword"><i class="bi bi-lock"></i>Şifre</label>
+                                    <div className="form-floating">
+                                        <input type="password" name='user.password' onChange={props.handleChange} className="form-control" id="floatingPassword" placeholder="Password" />
+                                        <label for="floatingPassword"><i className="bi bi-lock"></i> Şifre</label>
                                     </div>
 
                                     <div className="d-flex justify-content-between mt-4 align-items-center">
-                                        <div class="form-check text-white">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                            <label class="form-check-label" for="flexCheckDefault">
+                                        <div className="form-check text-white">
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                            <label className="form-check-label" for="flexCheckDefault">
                                                 Hizmet sözleşmesini onaylıyorum
                                             </label>
                                         </div>

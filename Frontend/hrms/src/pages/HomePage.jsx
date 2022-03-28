@@ -33,6 +33,11 @@ export default function () {
                                             Sen sen değilsin, sen tam bir dehasın...
                                         </p>
                                         <div className="btn-wrapper mt-5">
+                                        <Button color="primary" size="lg" to="/auth/employer-register" tag={Link}>
+                                                <span className="btn-inner--text">
+                                                    İşveren
+                                                </span>
+                                            </Button>{" "}
                                             <Button color="success" size="lg" to="/auth/jobseeker-register" tag={Link}>
                                                 <span className="btn-inner--text">
                                                     Üye Ol

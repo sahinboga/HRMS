@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Route } from 'react-router'
+import { useHistory } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import { Button, Dropdown } from 'semantic-ui-react'
 import DashboardNavbar from '../components/DashboardNavbar'
@@ -11,10 +13,18 @@ import languageList from '../pages/language/LanguageList'
 import SchoolList from '../pages/school/SchoolList'
 import CompanySectorList from '../pages/sector/CompanySectorList'
 import SkillList from '../pages/skill/SkillList'
+import { logout } from '../store/actions/authActions'
 
 export default function AdminDashboard() {
 
     const [isProfileOpen, setIsProfileOpen] = useState(false)
+    const dispatch=useDispatch()
+    const history=useHistory()
+    
+    const logoutClick=()=>{
+        dispatch(logout())
+        history.push("/auth/login")
+    }
     return (
         <div>
             <DashboardNavbar>
@@ -23,7 +33,7 @@ export default function AdminDashboard() {
                     <Dropdown direction="left" open={isProfileOpen} onClick={() => setIsProfileOpen(!isProfileOpen)}>
                         <Dropdown.Menu>
                             <Dropdown.Item icon="setting" text="Ayarlar"/>
-                            <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" />
+                            <Dropdown.Item icon="sign-out" text="Çıkış Yap" onClick={()=>logoutClick()} className="text-danger" />
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>

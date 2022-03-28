@@ -11,6 +11,8 @@ export default function authReducer(state=defaultState, {type, payload}) {
     switch(type) {
         case authTypes.SAVE_DATA:
             return {...state, data: payload}
+        case authTypes.USER_LOGOUT:
+            return {...state,data:null}
         default:
             return {...state}
     }

@@ -35,6 +35,6 @@ public class Role {
 	}
 	
 	public static final Role EMPLOYER() {
-		return new Role(3);
+		return new Role(2);
 	}
 }
