@@ -62,11 +62,11 @@ export default function LoginPage() {
                                 <form className="form-group login-form">
                                     <div className="form-floating mb-3">
                                         <input name='email' onChange={props.handleChange} type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                                        <label for="floatingInput"><i className="bi bi-person"></i>E-mail adresi</label>
+                                        <label for="floatingInput"><i className="bi bi-envelope"></i> E-mail adresi</label>
                                     </div>
                                     <div className="form-floating">
                                         <input name='password' onChange={props.handleChange} type="password" className="form-control" id="floatingPassword" placeholder="Password" />
-                                        <label for="floatingPassword"><i className="bi bi-lock"></i>Şifre</label>
+                                        <label for="floatingPassword"><i className="bi bi-lock"></i> Şifre</label>
                                     </div>
 
                                     <div className="d-flex justify-content-between mt-4 align-items-center">

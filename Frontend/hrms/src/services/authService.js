@@ -14,6 +14,10 @@ export default class AuthService{
         return api().post(api_url+"/registerforjobseeker",jobSeeker)
     }
 
+    registerEmployer(employer){
+        return api().post(api_url+"/registerforemployer",employer)
+    }
+
     static getAuth() {
         let auth = Cookies.get(CookieTypes.AUTH)
         if(!auth) {

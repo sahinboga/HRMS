@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react'
+import { useDispatch } from 'react-redux'
 import { Route } from 'react-router'
+import { useHistory } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import { Button, Dropdown } from 'semantic-ui-react'
 import DashboardNavbar from '../components/DashboardNavbar'
@@ -9,6 +11,7 @@ import EmployerProfile from '../pages/employer/EmployerProfile'
 import AddJobAdvert from '../pages/jobAdvertisement/AddJobAdvert'
 import UpdateJobAdvert from '../pages/jobAdvertisement/UpdateJobAdvert'
 import AuthService from '../services/authService'
+import { logout } from '../store/actions/authActions'
 
 export default function EmployerDashboard() {
 
@@ -16,22 +19,23 @@ export default function EmployerDashboard() {
 
     const [isProfileOpen, setIsProfileOpen] = useState(false)
 
-    let employer=AuthService.getAuth()
+    const dispatch=useDispatch()
+    const history=useHistory()
+    
+    const logoutClick=()=>{
+        dispatch(logout())
+        history.push("/auth/login")
+    }
 
-    useEffect(() => {
-        employer=AuthService.getAuth()
-      if(employer==null)
-            return;
-    }, [employer])
     return (
         <div>
             <DashboardNavbar>
                 <div className='m-3'>
-                    <img className="profile-btn" width="60" height="60" src={employer?.image?.imagePath ?? "https://jobick.dexignlab.com/xhtml/images/profile/pic1.jpg"} onClick={() => setIsProfileOpen(!isProfileOpen)} />
+                    <img className="profile-btn" width="60" height="60" src="https://jobick.dexignlab.com/xhtml/images/profile/pic1.jpg" onClick={() => setIsProfileOpen(!isProfileOpen)} />
                     <Dropdown direction="left" open={isProfileOpen} onClick={() => setIsProfileOpen(!isProfileOpen)}>
                         <Dropdown.Menu>
                             <Dropdown.Item icon="setting" text="Ayarlar" />
-                            <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" />
+                            <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" onClick={()=>logoutClick()}/>
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
