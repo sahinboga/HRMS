@@ -1,9 +1,10 @@
 import axios from "axios"
+import api from "./api";
 
 export default class DepartmentService{
 
     getDepartment(){
 
-        return axios.get("http://localhost:8080/api/departments/getall")
+        return api().get("/departments/getall")
     }
 }

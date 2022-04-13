@@ -1,9 +1,10 @@
 import axios from "axios"
+import api from "./api"
 
 export default class RoleService{
 
     getRoles(){
 
-        return axios.get("http://localhost:8080/api/roles/getall")
+        return api().get("/roles/getall")
     }
 }
