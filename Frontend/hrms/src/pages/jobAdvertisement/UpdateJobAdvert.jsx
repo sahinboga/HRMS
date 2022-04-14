@@ -11,7 +11,6 @@ import RichTextEditor from '../../components/richTextEditor/RichTextEditor';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import JobAdvertisementService from '../../services/jobAdvertismentService';
-import { getJobAdvertisementFilterAndPage } from '../../store/actions/jobAdvertisementAction';
 
 export default function UpdateJobAdvert() {
     
