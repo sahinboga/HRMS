@@ -1,9 +1,10 @@
 import axios from "axios"
+import api from "./api"
 
 export default class SkillService{
 
     getSkill(){
 
-        return axios.get("http://localhost:8080/api/skills/getall")
+        return api().get("/skills/getall")
     }
 }

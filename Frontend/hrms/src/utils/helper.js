@@ -17,7 +17,7 @@ class Helper {
 
     static DateEditing(date) {
         const d =new Date(date)
-        if(Helper.isValidDate(d)){
+        if(date && Helper.isValidDate(d)){
 
             const [year, month, day] = date.split('-')
             // dd/mm/yyyy

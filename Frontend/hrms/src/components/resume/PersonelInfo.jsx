@@ -26,11 +26,11 @@ export default function PersonelInfo() {
     const formikRef = useRef(null)
 
     const initialValues = {
-        birthDate: resume.data.birthDate,
-        phone: resume.data.phone,
-        github: resume.data.github,
-        linkedin: resume.data.linkedin,
-        adress: resume.data.adress
+        birthDate: resume?.data?.birthDate,
+        phone: resume?.data?.phone,
+        github: resume?.data?.github,
+        linkedin: resume?.data?.linkedin,
+        adress: resume?.data?.adress
     }
 
     const schema = Yup.object().shape({

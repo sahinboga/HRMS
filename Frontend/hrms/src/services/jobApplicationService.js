@@ -1,12 +1,14 @@
 import axios from 'axios'
+import api from './api'
 
+const api_url="/jobapplications"
 export default class jobApplicationService{
     
     apply(jobApplication){
-        return axios.post("http://localhost:8080/api/jobapplications/apply",jobApplication)
+        return api().post(api_url+"/apply",jobApplication)
     }
     
     getAllByEmployerJobApplication(jobAdvertId){
-        return axios.get("http://localhost:8080/api/jobapplications/getallbyjobadvert?id="+jobAdvertId)
+        return api().get(api_url+"/getallbyjobadvert?id="+jobAdvertId)
     }
 }

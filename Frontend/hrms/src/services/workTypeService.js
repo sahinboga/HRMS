@@ -1,8 +1,9 @@
 import axios from "axios";
+import api from "./api";
 
 export default class WorkTypeService{
 
     getWorkType(){
-        return axios.get("http://localhost:8080/api/worktypes/getall")
+        return api().get("/worktypes/getall")
     }
 }
