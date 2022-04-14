@@ -6,8 +6,9 @@ export default class Constant{
     static UserRole=2
     static Roles={
         Admin:1,
-        JobSeeker:2,
-        Employer:3
+        Employer:2,
+        JobSeeker:3
+        
     }
 }
 
