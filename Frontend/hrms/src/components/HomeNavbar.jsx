@@ -58,7 +58,7 @@ class HomeNavbar extends React.Component {
               <div className="d-flex align-items-center">
 
                 <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
-                  <Brand bold/>
+                  <Brand bold />
                   {/* <img
                     alt="..."
                     src={require("../assets/images/brand/hrms-logo.png")}
@@ -110,6 +110,11 @@ class HomeNavbar extends React.Component {
                   </Nav>
                   <Nav className="align-items-lg-center ml-lg-auto" navbar>
                     <NavItem className="d-none d-lg-block ml-lg-4">
+                      <Button color="primary" to="/auth/employer-register" tag={Link}>
+                        <span className="btn-inner--text">
+                          İşveren
+                        </span>
+                      </Button>{" "}
                       <Button color="success" to="/auth/jobseeker-register" tag={Link}>
                         <span className="btn-inner--text">
                           Üye Ol

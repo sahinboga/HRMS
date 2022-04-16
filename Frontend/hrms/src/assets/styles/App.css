@@ -9,15 +9,20 @@ h1{
 }
 .dashboard_navbar{
   z-index: 999;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  overflow: hidden;
   background-color: var(--dashboard-color);
   position: fixed;
   top: 0;
   width: 100%;
   height: var(--navbar-height);
+}
+
+.dashboard_navbar_main {
+  height: var(--navbar-height);
+  display: flex;
+  padding: 0px 10px;
+  justify-content: space-between;
+  align-items: center; 
 }
 
 .dashboard_logo{
