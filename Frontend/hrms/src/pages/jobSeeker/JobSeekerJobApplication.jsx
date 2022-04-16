@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import Helper from '../../utils/helper'
 
 export default function JobSeekerJobApplication() {
 
@@ -34,7 +35,7 @@ export default function JobSeekerJobApplication() {
                                                             <a href={`/jobseeker/jobadvertisements/detail/`+js.jobAdvertisement.id} target="_blank" class="jal-center col pl-md-3">
                                                                 <div class="jal-title">{js?.jobAdvertisement?.jobPosition?.jobName}</div>
                                                                 <div class="jal-firm-name">{js?.jobAdvertisement?.employer?.companyName}</div>
-                                                                <div class="jal-date">Başvuru Tarihi <span>13.01.2022</span></div>
+                                                                <div class="jal-date">Başvuru Tarihi : <span>{Helper.DateEditing(js.applicationDate)}</span></div>
                                                             </a>
                                                         </div>
                                                     </div>
