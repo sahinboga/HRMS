@@ -19,7 +19,6 @@ export default function EmployerProfile() {
     const dispatch = useDispatch()
 
     const [logo, setLogo] = useState(null)
-    const [logoPreview, setLogoPreview] = useState(null)
     const [loading, setLoading] = useState(false)
     const logoInputRef = useRef(null)
     const previewImageRef = useRef(null)

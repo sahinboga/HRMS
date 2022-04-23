@@ -2,6 +2,7 @@ import { Formik } from 'formik'
 import React, {useSelector} from 'react'
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import authService from '../../services/authService'
 
 export default function JobSeekerRegisterPage() {
     const initialValues = {
@@ -15,18 +16,17 @@ export default function JobSeekerRegisterPage() {
 
     const history = useHistory()
 
-    // const handleRegister = (values) => {
-    //     const authService = new AuthService()
-    //     console.log(values)
-    //     authService.registerJobSekeer(values).then(result => {
-    //         if (result.data.success) {
-    //             toast.success(result.data.message)
-    //             history.push("/auth/login")
-    //         } else {
-    //             toast.error(result.data.message)
-    //         }
-    //     })
-    // }
+    const handleRegister = (values) => {
+        console.log(values)
+        authService.registerJobSekeer(values).then(result => {
+            if (result.data.success) {
+                toast.success(result.data.message)
+                history.push("/auth/login")
+            } else {
+                toast.error(result.data.message)
+            }
+        })
+    }
     return (
         <div>
             <div className="limiter">
@@ -42,7 +42,7 @@ export default function JobSeekerRegisterPage() {
                             </span>
                             <Formik
                                 initialValues={initialValues}
-                                //onSubmit={handleRegister}
+                                onSubmit={handleRegister}
                             >
                                 {props => (
                                     <form className="form-group login-form">

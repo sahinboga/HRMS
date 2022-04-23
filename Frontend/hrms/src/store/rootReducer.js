@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import authReducer from "./reducers/authReducer";
 import cityReducer from "./reducers/cityReducer";
 import companySectorReducer from "./reducers/companySectorReducer";
 import employerReducer from "./reducers/employerReducer";
@@ -12,7 +13,7 @@ import schoolReducer from "./reducers/schoolReducer";
 import skillReducer from "./reducers/skillReducer";
 
 const rootReducer= combineReducers({
-
+    auth: authReducer,
     jobPositions:jobPositionReducer,
     skills:skillReducer,
     schools:schoolReducer,

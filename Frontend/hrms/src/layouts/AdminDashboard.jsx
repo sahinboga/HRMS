@@ -11,10 +11,12 @@ import languageList from '../pages/language/LanguageList'
 import SchoolList from '../pages/school/SchoolList'
 import CompanySectorList from '../pages/sector/CompanySectorList'
 import SkillList from '../pages/skill/SkillList'
+import Constant from '../utils/constants'
 
 export default function AdminDashboard() {
 
     const [isProfileOpen, setIsProfileOpen] = useState(false)
+    const url = Constant.RoleBasedRoute.Admin
     return (
         <div>
             <DashboardNavbar>
@@ -29,27 +31,27 @@ export default function AdminDashboard() {
                 </div>
             </DashboardNavbar>
             <DashboardSidebar>
-                <Button icon="home" content="Dashboard" className="sidebar_btn" as={NavLink} to="/admin-dashboard/home" />
-                <Button icon="briefcase" content="İş İlanları" className="sidebar_btn" as={NavLink} to="/admin-dashboard/jobadvertisements" />
-                <Button icon="search plus" content="İş Pozisyonu" className="sidebar_btn" as={NavLink} to="/admin-dashboard/job-position-list" />
-                <Button icon="settings" content="Sektörler" className="sidebar_btn" as={NavLink} to="/admin-dashboard/company-sector-list" />
-                <Button icon="star" content="Yetenek" className="sidebar_btn" as={NavLink} to="/admin-dashboard/skill-list" />
-                <Button icon="university" content="Okul" className="sidebar_btn" as={NavLink} to="/admin-dashboard/school-list" />
-                <Button icon="language" content="Diller" className="sidebar_btn" as={NavLink} to="/admin-dashboard/language-list" />
-                <Button icon="building" content="Şehirler" className="sidebar_btn" as={NavLink} to="/admin-dashboard/city-list" />
+                <Button icon="home" content="Dashboard" className="sidebar_btn" as={NavLink} to={url + "/home"} />
+                <Button icon="briefcase" content="İş İlanları" className="sidebar_btn" as={NavLink} to={url + "/jobadvertisements"} />
+                <Button icon="search plus" content="İş Pozisyonu" className="sidebar_btn" as={NavLink} to={url + "/job-position-list"} />
+                <Button icon="settings" content="Sektörler" className="sidebar_btn" as={NavLink} to={url + "/company-sector-list"} />
+                <Button icon="star" content="Yetenek" className="sidebar_btn" as={NavLink} to={url + "/skill-list"} />
+                <Button icon="university" content="Okul" className="sidebar_btn" as={NavLink} to={url + "/school-list"} />
+                <Button icon="language" content="Diller" className="sidebar_btn" as={NavLink} to={url + "/language-list"} />
+                <Button icon="building" content="Şehirler" className="sidebar_btn" as={NavLink} to={url + "/city-list"} />
             </DashboardSidebar>
             <main className="dashboard_main ">
                 <div>
-                    <Route path="/admin-dashboard/jobadvertisements" component={JobAdvertismentList} />
+                    <Route path={url + "/jobadvertisements"} component={JobAdvertismentList} />
                 </div>
                 <div className="w-75 m-auto">
 
-                    <Route path="/admin-dashboard/job-position-list" component={JobPositionList} />
-                    <Route path="/admin-dashboard/company-sector-list" component={CompanySectorList} />
-                    <Route path="/admin-dashboard/skill-list" component={SkillList} />
-                    <Route path="/admin-dashboard/school-list" component={SchoolList} />
-                    <Route path="/admin-dashboard/language-list" component={languageList} />
-                    <Route path="/admin-dashboard/city-list" component={CityList} />
+                    <Route path={url + "/job-position-list"} component={JobPositionList} />
+                    <Route path={url + "/company-sector-list"} component={CompanySectorList} />
+                    <Route path={url + "/skill-list"} component={SkillList} />
+                    <Route path={url + "/school-list"} component={SchoolList} />
+                    <Route path={url + "/language-list"} component={languageList} />
+                    <Route path={url + "/city-list"} component={CityList} />
                 </div>
 
             </main>

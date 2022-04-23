@@ -4,16 +4,20 @@ import { NavLink } from 'react-router-dom'
 import { Button, Dropdown } from 'semantic-ui-react'
 import DashboardNavbar from '../components/DashboardNavbar'
 import DashboardSidebar from '../components/DashboardSidebar'
+import useAuth from '../hooks/useAuth'
 import EmployerJobApplication from '../pages/employer/EmployerJobApplication'
 import EmployerProfile from '../pages/employer/EmployerProfile'
 import AddJobAdvert from '../pages/jobAdvertisement/AddJobAdvert'
 import UpdateJobAdvert from '../pages/jobAdvertisement/UpdateJobAdvert'
+import Constant from '../utils/constants'
 
 export default function EmployerDashboard() {
 
-    const url = "/employer"
+    const url = Constant.RoleBasedRoute.Employer
 
     const [isProfileOpen, setIsProfileOpen] = useState(false)
+
+    const {handleLogout} = useAuth()
     return (
         <div>
             <DashboardNavbar>
@@ -22,7 +26,7 @@ export default function EmployerDashboard() {
                     <Dropdown direction="left" open={isProfileOpen} onClick={() => setIsProfileOpen(!isProfileOpen)}>
                         <Dropdown.Menu>
                             <Dropdown.Item icon="user" text="Profilim" />
-                            <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" />
+                            <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" onClick={()=>handleLogout()}/>
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>

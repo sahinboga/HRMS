@@ -2,13 +2,14 @@ import { Formik } from 'formik'
 import React from 'react'
 import { useHistory } from 'react-router'
 import { toast } from 'react-toastify'
+import authService from '../../services/authService'
 
 export default function EmployerRegisterPage() {
 
     const initialValues={
         companyName:"",
         phone:"",
-        wbesite:"",
+        website:"",
         user:{
             email:"",
             password:""
@@ -17,18 +18,17 @@ export default function EmployerRegisterPage() {
 
     const history=useHistory()
 
-    // const handleRegister=(values)=>{
-    //     const authService = new AuthService()
-    //     console.log(values)
-    //     authService.registerEmployer(values).then(result=>{
-    //         if(result.data.success) {
-    //             toast.success(result.data.message)
-    //             history.push("/auth/login")
-    //         } else {
-    //             toast.error(result.data.message)
-    //         }
-    //     })
-    // }
+    const handleRegister=(values)=>{
+         console.log(values)
+        authService.registerEmployer(values).then(result=>{
+            if(result.data.success) {
+                toast.success(result.data.message)
+                history.push("/auth/login")
+            } else {
+                toast.error(result.data.message)
+            }
+        })
+    }
 
     return (
         <div>
@@ -45,7 +45,7 @@ export default function EmployerRegisterPage() {
                             </span>
                             <Formik
                                 initialValues={initialValues}
-                                //onSubmit={handleRegister}
+                                onSubmit={handleRegister}
                             >
                                 {props => (
                                     <form className="form-group login-form">

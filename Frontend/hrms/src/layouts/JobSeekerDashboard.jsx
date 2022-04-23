@@ -9,13 +9,16 @@ import JobAdvertismentList from '../pages/jobAdvertisement/JobAdvertismentList'
 import FavoriteJobAdvertList from '../pages/jobAdvertisement/FavoriteJobAdvertList'
 import ResumePage from '../pages/resume/ResumePage'
 import JobSeekerJobApplication from '../pages/jobSeeker/JobSeekerJobApplication'
+import useAuth from '../hooks/useAuth'
+import Constant from '../utils/constants'
 
 export default function JobSeekerDashboard() {
 
-    const url = "/jobseeker"
+    const url = Constant.RoleBasedRoute.JobSeeker
 
     const [isProfileOpen, setIsProfileOpen] = useState(false)
 
+    const {handleLogout} = useAuth()
     return (
         <div>
             <DashboardNavbar>
@@ -24,7 +27,7 @@ export default function JobSeekerDashboard() {
                     <Dropdown direction="left" open={isProfileOpen} onClick={() => setIsProfileOpen(!isProfileOpen)}>
                         <Dropdown.Menu>
                             <Dropdown.Item icon="user" text="Profilim" />
-                            <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" />
+                            <Dropdown.Item onClick={() => handleLogout()} icon="sign-out" text="Çıkış Yap" className="text-danger" />
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
