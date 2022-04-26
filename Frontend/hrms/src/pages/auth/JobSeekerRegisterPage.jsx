@@ -3,6 +3,7 @@ import React, {useSelector} from 'react'
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import authService from '../../services/authService'
+import * as Yup from "yup";
 
 export default function JobSeekerRegisterPage() {
     const initialValues = {
@@ -14,6 +15,15 @@ export default function JobSeekerRegisterPage() {
         }
     }
 
+    const schema = Yup.object().shape({
+        user: Yup.object().shape({
+            email: Yup.string().email("Geçerli bir e-mail giriniz!").required("Bu alan zorunlu!"),
+            password:Yup.string().min(6).required()
+        }),
+        firstName: Yup.string().required("Bu alan zorunlu!"),
+        lastName: Yup.string().required("Bu alan zorunlu!")
+    });
+    
     const history = useHistory()
 
     const handleRegister = (values) => {
@@ -42,6 +52,7 @@ export default function JobSeekerRegisterPage() {
                             </span>
                             <Formik
                                 initialValues={initialValues}
+                                //validationSchema={schema}
                                 onSubmit={handleRegister}
                             >
                                 {props => (
