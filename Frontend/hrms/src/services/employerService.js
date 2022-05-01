@@ -7,4 +7,9 @@ export default class EmployerService{
 
         return api().get("/employers/getemployer?employerId="+id)
     }
+
+    getEmployerByUserId(userId){
+
+        return api().get("/employers/getemployerbyuserid?userId="+userId)
+    }
 }

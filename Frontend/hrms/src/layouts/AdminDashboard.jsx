@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { Button, Dropdown } from 'semantic-ui-react'
 import DashboardNavbar from '../components/DashboardNavbar'
 import DashboardSidebar from '../components/DashboardSidebar'
+import useAuth from '../hooks/useAuth'
 import CityList from '../pages/city/CityList'
 import JobAdvertismentList from '../pages/jobAdvertisement/JobAdvertismentList'
 import JobPositionList from '../pages/jobPosition/JobPositionList'
@@ -17,6 +18,8 @@ export default function AdminDashboard() {
 
     const [isProfileOpen, setIsProfileOpen] = useState(false)
     const url = Constant.RoleBasedRoute.Admin
+
+    const {handleLogout} = useAuth()
     return (
         <div>
             <DashboardNavbar>
@@ -25,7 +28,7 @@ export default function AdminDashboard() {
                     <Dropdown direction="left" open={isProfileOpen} onClick={() => setIsProfileOpen(!isProfileOpen)}>
                         <Dropdown.Menu>
                             <Dropdown.Item icon="setting" text="Ayarlar"/>
-                            <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" />
+                            <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" onClick={()=>handleLogout()} />
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>

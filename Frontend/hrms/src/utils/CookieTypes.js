@@ -1,3 +1,4 @@
 export const CookieTypes = {
-    AUTH: "AUTH"
+    AUTH: "AUTH",
+    USER:"USER"
 }

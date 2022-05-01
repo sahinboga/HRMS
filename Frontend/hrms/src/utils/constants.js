@@ -6,14 +6,22 @@ export default class Constant{
     static getUserId() {
         const user = CookieService.get(CookieTypes.AUTH)
         if(user) {
-            return user.userId
+            return user.user.userId
         }
         return -1
 
     }
     
-    static employerId=this.getUserId()
-    static JobSeekerId=this.getUserId()
+    static getUserUniqueId() {
+        const user = CookieService.get(CookieTypes.AUTH)
+        if(user) {
+            return user.id
+        }
+        return -1
+    }
+
+    static employerId= this.getUserUniqueId()
+    static JobSeekerId= this.getUserUniqueId()
     static UserRole=this.getUserId()
     static Roles={
         Admin:1,

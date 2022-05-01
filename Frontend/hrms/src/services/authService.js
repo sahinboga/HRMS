@@ -12,6 +12,8 @@ class AuthService {
     registerEmployer(data){
         return api().post(api_url+"registerforemployer",data)
     }
+
+    
 }
 
 export default new AuthService()

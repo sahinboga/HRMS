@@ -6,7 +6,7 @@ export default class StorageService{
 
     static checkRoleWithId(id) {
         const user = CookieService.get(CookieTypes.AUTH)
-        return user && user.role.id == id
+        return user && user.user.role.id == id
     }
 
     static isAdmin(){

@@ -28,14 +28,14 @@ export default function JobSeekerJobApplication() {
                                                     <div className="jal-box ">
                                                         <div className="jal-top row">
                                                             <div className="jal-left col col-auto">
-                                                                <a href="#" target="_blank" class="jal-logo float-md-right float-md-right">
+                                                                <a href="#" target="_blank" className="jal-logo float-md-right float-md-right">
                                                                     <figure><img src={js?.jobAdvertisement?.employer?.image?.imagePath} />
                                                                     </figure></a>
                                                             </div>
-                                                            <a href={`/jobseeker/jobadvertisements/detail/`+js.jobAdvertisement.id} target="_blank" class="jal-center col pl-md-3">
-                                                                <div class="jal-title">{js?.jobAdvertisement?.jobPosition?.jobName}</div>
-                                                                <div class="jal-firm-name">{js?.jobAdvertisement?.employer?.companyName}</div>
-                                                                <div class="jal-date">Başvuru Tarihi : <span>{Helper.DateEditing(js.applicationDate)}</span></div>
+                                                            <a href={`/jobseeker/jobadvertisements/detail/`+js.jobAdvertisement.id} target="_blank" className="jal-center col pl-md-3">
+                                                                <div className="jal-title">{js?.jobAdvertisement?.jobPosition?.jobName}</div>
+                                                                <div className="jal-firm-name">{js?.jobAdvertisement?.employer?.companyName}</div>
+                                                                <div className="jal-date">Başvuru Tarihi : <span>{Helper.DateEditing(js.applicationDate)}</span></div>
                                                             </a>
                                                         </div>
                                                     </div>

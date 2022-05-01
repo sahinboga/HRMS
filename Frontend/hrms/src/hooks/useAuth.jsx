@@ -17,7 +17,7 @@ const useAuth = () => {
     const handleLogin = (values, callback=null) => {
         authService.login(values).then(res => {
             if(res.data.success) {
-                CookieService.set(CookieTypes.AUTH, res.data.data)
+                CookieService.set(CookieTypes.AUTH, {...res.data.data.userData})
                 dispatch(setLoginData(res.data.data))
                 Swal.fire({
                     title: "Başarılı",

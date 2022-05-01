@@ -1,11 +1,14 @@
+import Cookies from "js-cookie"
 import api from "../../services/api"
 import Constant from "../../utils/constants"
+import { CookieTypes } from "../../utils/CookieTypes"
 import { CallBack } from "./baseAction"
 
 export const employerTypes = {
     GET_EMPLOYER_START: "GET_EMPLOYER_START",
     GET_EMPLOYER_SUCCESS: "GET_EMPLOYER_SUCCESS",
-    GET_EMPLOYER_ERROR: "GET_EMPLOYER_ERROR"
+    GET_EMPLOYER_ERROR: "GET_EMPLOYER_ERROR",
+    GET_EMPLOYER:"GET_EMPLOYER"
 }
 
 const apiUrl="/employers"
@@ -33,4 +36,16 @@ export const uploadLogo = (logo) => async (dispatch) => {
 
 export const deleteLogo=()=>async(dispatch)=>{
     return CallBack(api().delete(apiUrl+`/deletelogo?id=${Constant.employerId}`),dispatch,getEmployer(Constant.employerId))
+}
+
+export const getEmployerByUserId=(userId)=>async (dispatch)=>{
+
+    try {
+        const response = await api().get(apiUrl + "/getemployerbyuserid?userId="+userId)
+        dispatch({type:employerTypes.GET_EMPLOYER, payload:response.data.data})
+        
+        Cookies.set(CookieTypes.USER, JSON.stringify(response.data.data))
+    }catch {
+
+    }
 }

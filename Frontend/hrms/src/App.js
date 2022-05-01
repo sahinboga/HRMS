@@ -10,7 +10,8 @@ import 'semantic-ui-css/semantic.min.css';
 import './assets/styles/App.css';
 import Dashboard from './layouts/Dashboard';
 import CookieService from './services/cookieService';
-import { setLoginData } from './store/actions/authActions';
+import JobSeekerService from './services/jobSeekerService';
+import { setLoginData, setUserData } from './store/actions/authActions';
 import { getAllCity } from './store/actions/cityActions';
 import { getAllSectors } from './store/actions/companySectorActions';
 import { getEmployer } from './store/actions/employerActions';
@@ -43,7 +44,7 @@ function App() {
     if (user) {
       //constant içerisindeki Role ve RoleBasedRoute birleştirilecek
       let path = "" //Constant.Roles.find(x => x.id === user.role.id).routePath
-      switch (user.role.id) {
+      switch (user.user.role.id) {
         case Constant.Roles.Admin:
           path = Constant.RoleBasedRoute.Admin
           break

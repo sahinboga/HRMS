@@ -12,7 +12,7 @@ export default function EmployerJobApplication() {
 
     useEffect(() => {
       let jobApplicationService=new JobApplicationService()
-      jobApplicationService.getAllByEmployerJobApplication(2).then(result=>setIncomingApplication(result.data.data))
+      jobApplicationService.getAllByEmployerJobApplication(9).then(result=>setIncomingApplication(result.data.data))
     }, [])
     //console.log(incomingApplication)
     return (

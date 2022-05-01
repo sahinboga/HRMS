@@ -13,7 +13,7 @@ const ProtectedRoute = ({roles, ...rest}) => {
         return <Redirect to={"/auth/login"} />
     }
 
-    const isAccess = user && user.role && roles?.includes(user.role.id)
+    const isAccess = user && user.user.role && roles?.includes(user.user.role.id)
     if(!isAccess) {
         return <Redirect to={"/forbidden"} />
     }
