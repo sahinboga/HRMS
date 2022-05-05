@@ -6,7 +6,7 @@ export default class Constant{
     static getUserId() {
         const user = CookieService.get(CookieTypes.AUTH)
         if(user) {
-            return user.user.userId
+            return user?.user?.userId
         }
         return -1
 

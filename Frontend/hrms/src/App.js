@@ -44,7 +44,7 @@ function App() {
     if (user) {
       //constant içerisindeki Role ve RoleBasedRoute birleştirilecek
       let path = "" //Constant.Roles.find(x => x.id === user.role.id).routePath
-      switch (user.user.role.id) {
+      switch (user?.user?.role?.id) {
         case Constant.Roles.Admin:
           path = Constant.RoleBasedRoute.Admin
           break
