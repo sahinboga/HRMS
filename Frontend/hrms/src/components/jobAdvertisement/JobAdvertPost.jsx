@@ -11,10 +11,16 @@ import IsApprovedIcon from './IsApprovedIcon'
 
 export default function JobAdvertPost({ jobAdvert }) {
 
+    const handleUrl =()=>{
+        if(StorageService.isAdmin())
+            return "/admin-dashboard/jobadvertisements/detail/"
+        else if(StorageService.isJobSeeker())
+            return  "/jobseeker/jobadvertisements/detail/"
+    }
 
     return (
         <div className="position-relative w-75 m-auto ">
-            <Segment className="row p-4 mb-4" as={NavLink} to={"/jobseeker/jobadvertisements/detail/" + jobAdvert.id}>
+            <Segment className="row p-4 mb-4" as={NavLink} to={()=>"/jobadvertisements/detail/" + jobAdvert.id}>
                 <div className="col-md-9">
                     <h3>{jobAdvert?.jobPosition?.jobName}</h3>
                     <h4 className="text-dark">{jobAdvert?.employer?.companyName}</h4>

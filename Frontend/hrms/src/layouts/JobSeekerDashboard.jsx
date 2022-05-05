@@ -11,6 +11,9 @@ import ResumePage from '../pages/resume/ResumePage'
 import JobSeekerJobApplication from '../pages/jobSeeker/JobSeekerJobApplication'
 import useAuth from '../hooks/useAuth'
 import Constant from '../utils/constants'
+import authService from '../services/authService'
+import CookieService from '../services/cookieService'
+import { CookieTypes } from '../utils/CookieTypes'
 
 export default function JobSeekerDashboard() {
 
@@ -36,7 +39,7 @@ export default function JobSeekerDashboard() {
                 <Button icon="home" content="Dashboard" className="sidebar_btn" as={NavLink} to={url + "/home"} />
                 <Button icon="briefcase" content="İş İlanları" className="sidebar_btn" as={NavLink} to={url + "/jobadvertisements"} />
                 <Button icon="heart outline" content="Favorilerim" className="sidebar_btn" as={NavLink} to={url + "/favorite-jobadverts"} />
-                <Button icon="file alternate outline" content="Özgeçmişim" className="sidebar_btn" as={NavLink} to={url + "/resume"} />
+                <Button icon="address card outline" content="Özgeçmişim" className="sidebar_btn" as={NavLink} to={url + "/resume"} />
                 <Button icon="file alternate outline" content="Başvurularım" className="sidebar_btn" as={NavLink} to={url + "/all-job-application"} />
 
             </DashboardSidebar>
@@ -48,9 +51,9 @@ export default function JobSeekerDashboard() {
                     <Route exact path={url + "/all-job-application"} component={JobSeekerJobApplication} />
                     <Route exact path={url + "/resume"} component={ResumePage} />
                 </div>
-                <div>
+                {/* <div>
                     <Route path={url + "/jobadvertisements/detail/:id"} component={JobAdvertDetail} />
-                </div>
+                </div> */}
 
             </main>
         </div>

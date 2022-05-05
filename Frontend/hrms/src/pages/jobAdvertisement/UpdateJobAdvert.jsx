@@ -14,15 +14,15 @@ import JobAdvertisementService from '../../services/jobAdvertismentService';
 
 export default function UpdateJobAdvert() {
     
-    // const jobAdvertisements = useSelector(state => state.jobAdvertisements)
+    //const jobAdvertisements = useSelector(state => state.jobAdvertisements)
     const [jobAdverts, setJobAdverts] = useState(null)
 
     const params = useParams()
     const formikRef = useRef(null)
     
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     useEffect(() => {
-        // const jobAdvert=jobAdvertisements.data.find(ja=>ja.jobAdvertisement.id==params.id)
+        //const jobAdvert=jobAdvertisements.data.find(ja=>ja.jobAdvertisement.id==params.id)
         const jobService = new JobAdvertisementService()
         jobService.getById(params.id || 0).then(res => {
             setJobAdverts(res.data.data)
@@ -71,8 +71,8 @@ export default function UpdateJobAdvert() {
         maxPerson: Yup.string().required("Bu alan zorunlu!")
     });
 
-    const updateJobAdvertSubmit=()=>{
-        //dispatch(UpdateJobAdvert(jobAdvert))
+    const updateJobAdvertSubmit=(jobAdvert)=>{
+        dispatch(UpdateJobAdvert(jobAdvert))
     }
     
     return (

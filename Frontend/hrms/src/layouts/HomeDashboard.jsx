@@ -1,6 +1,7 @@
 import React from 'react'
 import HomeNavbar from '../components/HomeNavbar'
 import MainFooter from '../components/MainFooter'
+import MainPage from '../components/MainPage'
 import HomePage from '../pages/HomePage'
 
 export default function HomeDashboard() {
@@ -8,6 +9,7 @@ export default function HomeDashboard() {
         <div>
             <HomeNavbar/>
             <HomePage/>
+            <MainPage/>
             <MainFooter/>
         </div>
     )

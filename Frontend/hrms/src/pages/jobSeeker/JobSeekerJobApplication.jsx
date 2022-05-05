@@ -32,7 +32,7 @@ export default function JobSeekerJobApplication() {
                                                                     <figure><img src={js?.jobAdvertisement?.employer?.image?.imagePath} />
                                                                     </figure></a>
                                                             </div>
-                                                            <a href={`/jobseeker/jobadvertisements/detail/`+js.jobAdvertisement.id} target="_blank" className="jal-center col pl-md-3">
+                                                            <a href={`/jobadvertisements/detail/`+js.jobAdvertisement.id} target="_blank" className="jal-center col pl-md-3">
                                                                 <div className="jal-title">{js?.jobAdvertisement?.jobPosition?.jobName}</div>
                                                                 <div className="jal-firm-name">{js?.jobAdvertisement?.employer?.companyName}</div>
                                                                 <div className="jal-date">Başvuru Tarihi : <span>{Helper.DateEditing(js.applicationDate)}</span></div>

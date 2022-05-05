@@ -75,7 +75,7 @@ export default function JobAdvertFiltre({ }) {
                 <Filtre header="Çalışma Tipi">
                     <SBCheckboxGroup trigger={setWorkTypeId} data={workTypes.map((wt) => { return { label: wt.name, value: wt.id } })} />
                 </Filtre>
-                {Constant.UserRole == Constant.Roles.Admin && (<Filtre header="İlan durumu">
+                {StorageService.isAdmin() && (<Filtre header="İlan durumu">
                     <SBCheckboxGroup trigger={setStatus} data={statusData.map((s) => { return { label: s.name, value: s.id } })} />
                 </Filtre>)}
                 <div className="p-3 text-center ">

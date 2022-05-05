@@ -6,6 +6,7 @@ import DashboardNavbar from '../components/DashboardNavbar'
 import DashboardSidebar from '../components/DashboardSidebar'
 import useAuth from '../hooks/useAuth'
 import CityList from '../pages/city/CityList'
+import JobAdvertDetail from '../pages/jobAdvertisement/JobAdvertDetail'
 import JobAdvertismentList from '../pages/jobAdvertisement/JobAdvertismentList'
 import JobPositionList from '../pages/jobPosition/JobPositionList'
 import languageList from '../pages/language/LanguageList'
@@ -56,6 +57,9 @@ export default function AdminDashboard() {
                     <Route path={url + "/language-list"} component={languageList} />
                     <Route path={url + "/city-list"} component={CityList} />
                 </div>
+                {/* <div>
+                    <Route path={url + "/jobadvertisements/detail/:id"} component={JobAdvertDetail} />
+                </div> */}
 
             </main>
         </div>

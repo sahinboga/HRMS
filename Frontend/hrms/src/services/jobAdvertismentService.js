@@ -11,4 +11,8 @@ const api_url = "/jobadvertisements"
     getById(id){
         return api().get(api_url+"/getjobadvertisement?jobAdvertisementId="+id)
     }
+
+    getEmployerJobAdverts(employerId){
+        return api().get(api_url+"/getemployerjobadvertisement?employerId="+employerId)
+    }
  }

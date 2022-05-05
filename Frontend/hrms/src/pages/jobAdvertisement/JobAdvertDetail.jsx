@@ -21,6 +21,7 @@ export default function JobAdvertDetail() {
 
     let { id } = useParams()
     const dispatch = useDispatch()
+    
     useEffect(() => {
         let jobAdvertisementService = new JobAdvertisementService()
         jobAdvertisementService.getById(id).then(result => setJobAdverts(result.data.data))

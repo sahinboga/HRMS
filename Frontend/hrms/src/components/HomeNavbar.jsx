@@ -93,7 +93,7 @@ class HomeNavbar extends React.Component {
 
                   <Nav className="navbar-nav-hover align-items-lg-center" navbar>
                     <NavItem>
-                      <Link to="#" className='nav-link'>
+                      <Link to="/jobadvertisements" className='nav-link'>
                         İş ilanları
                       </Link>
                     </NavItem>

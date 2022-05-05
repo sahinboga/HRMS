@@ -1,6 +1,8 @@
 import React from 'react'
 import { Route, Switch } from 'react-router'
 import ProtectedRoute from '../hoc/ProtectedRoute'
+import JobAdvertDetail from '../pages/jobAdvertisement/JobAdvertDetail'
+import JobAdvertismentList from '../pages/jobAdvertisement/JobAdvertismentList'
 import Constant from '../utils/constants'
 //import _404NotFound from '../pages/erros/_404NotFound'
 //import _500InternalServer from '../pages/erros/_500InternalServer'
@@ -18,6 +20,8 @@ export default function Dashboard() {
                 <ProtectedRoute roles={[Constant.Roles.Admin]} path={Constant.RoleBasedRoute.Admin} component={AdminDashboard}/>
                 <ProtectedRoute roles={[Constant.Roles.Employer]} path={Constant.RoleBasedRoute.Employer} component={EmployerDashboard}/>
                 <ProtectedRoute roles={[Constant.Roles.JobSeeker]} path={Constant.RoleBasedRoute.JobSeeker} component={JobSeekerDashboard}/>
+                
+                <Route path={"/jobadvertisements/detail/:id"} component={JobAdvertDetail} />
                 <Route path="/auth" component={AuthDashboard}/>
                 <Route path="/" component={HomeDashboard}/>
             </Switch>

@@ -22,6 +22,7 @@ export default class Constant{
 
     static employerId= this.getUserUniqueId()
     static JobSeekerId= this.getUserUniqueId()
+    static AdminId=this.getUserUniqueId()
     static UserRole=this.getUserId()
     static Roles={
         Admin:1,

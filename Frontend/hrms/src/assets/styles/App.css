@@ -188,6 +188,12 @@ body{
   right: 5px;
 }
 
+.top-right2 {
+  position: absolute;
+  top: 5px;
+  left: 675px;
+}
+
 /*özgeçmiş css*/
 
 .resume{
@@ -437,4 +443,94 @@ body{
   content: '\f0d7';
   color: whitesmoke;
   font-size: 20px !important;
+}
+
+
+/* Main page */
+
+.what_can_you_do{
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    padding: 105px 0 130px;
+    background-color: #f4f4f4;
+}
+
+.what_can_you_do .container{
+  width: 80%;
+}
+
+.grid_title{
+  width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    margin-bottom: 70px;
+}
+
+.grid_title h1{
+  font-family: Montserrat,sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: #344154;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.grid_title p{
+  font-family: Montserrat,sans-serif;
+    width: 1000px;
+    color: #344154;
+    font-size: 15px;
+    font-weight: 300;
+    text-align: center;
+    margin: auto;
+    line-height: 17px;
+}
+
+.card:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.mainpage-card{
+    width: 100%;
+    height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    border: none;
+    padding: 40px 15px;
+    min-height: 450px;
+}
+
+.card-body{
+  padding: 30px;
+  height: 100%;
+   border-radius: 5px;
+}
+
+.mainpage-card-img{
+    width: 130px;
+    margin: 0 auto;
+}
+.mainpage-card-img img{
+  width: 100%;
+}
+.mainpage-card-title{
+  font-family: Montserrat,sans-serif;
+    font-size: 15px;
+    color: #0b6bc0;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 30px;
+}
+.mainpage-card-content{
+  font-family: Montserrat,sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6d7783;
+  text-align: center;
 }

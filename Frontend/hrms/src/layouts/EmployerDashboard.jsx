@@ -5,6 +5,7 @@ import { Button, Dropdown } from 'semantic-ui-react'
 import DashboardNavbar from '../components/DashboardNavbar'
 import DashboardSidebar from '../components/DashboardSidebar'
 import useAuth from '../hooks/useAuth'
+import EmployerJobAdverts from '../pages/employer/EmployerJobAdverts'
 import EmployerJobApplication from '../pages/employer/EmployerJobApplication'
 import EmployerProfile from '../pages/employer/EmployerProfile'
 import AddJobAdvert from '../pages/jobAdvertisement/AddJobAdvert'
@@ -35,6 +36,7 @@ export default function EmployerDashboard() {
                 <Button icon="home" content="Dashboard" className="sidebar_btn" as={NavLink} to={url + "/home"} />
                 <Button icon="file alternate outline" content="Başvurular" className="sidebar_btn" as={NavLink} to={url + "/get-job-application"} />
                 <Button icon="user circle" content="Profil" className="sidebar_btn" as={NavLink} to={url + "/profile"} />
+                <Button icon="file alternate outline" content="İlanlar" className="sidebar_btn" as={NavLink} to={url + "/my-job-advertisements"} />
                 <Button icon="add circle" content="İlan Ekle" className="sidebar_btn" as={NavLink} to={url + "/add-jobadvert"} />
             </DashboardSidebar>
             <main>
@@ -42,6 +44,7 @@ export default function EmployerDashboard() {
                 <Route exact path={url + "/add-jobadvert"} component={AddJobAdvert} />
                 <Route exact path={url + "/update-jobadvert/:id"} component={UpdateJobAdvert} />
                 <Route exact path={url + "/get-job-application"} component={EmployerJobApplication} />
+                <Route exact path={url + "/my-job-advertisements"} component={EmployerJobAdverts} />
             </main>
         </div>
     )

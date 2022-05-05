@@ -10,6 +10,7 @@ import WorkTypeDropdown from '../../components/dropdowns/WorkTypeDropdown';
 import RichTextEditor from '../../components/richTextEditor/RichTextEditor';
 import {addJobAdvert} from '../../store/actions/jobAdvertisementAction'
 import { useDispatch } from 'react-redux';
+import Constant from '../../utils/constants';
 
 export default function AddJobAdvert() {
 
@@ -19,6 +20,7 @@ export default function AddJobAdvert() {
         companySector: { id: "" },
         city: { cityId: "" },
         workType: { id: "" },
+        employer: {id: Constant.employerId},
         releaseDate: "",
         deadline: "",
         minSalary: "",
