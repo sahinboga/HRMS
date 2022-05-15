@@ -28,7 +28,7 @@ export default function JobPositionList() {
                 <Table celled selectable inverted color="teal">
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Id</Table.HeaderCell>
+                            <Table.HeaderCell>#</Table.HeaderCell>
                             <Table.HeaderCell>İş Pozisyonu</Table.HeaderCell>
                             <Table.HeaderCell></Table.HeaderCell>
                         </Table.Row>

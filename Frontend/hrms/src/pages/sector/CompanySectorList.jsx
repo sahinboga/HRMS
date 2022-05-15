@@ -28,7 +28,7 @@ export default function CompanySectorList() {
                 <Table celled selectable inverted color="teal">
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Id</Table.HeaderCell>
+                            <Table.HeaderCell>#</Table.HeaderCell>
                             <Table.HeaderCell>Sektör</Table.HeaderCell>
                             <Table.HeaderCell></Table.HeaderCell>
                         </Table.Row>

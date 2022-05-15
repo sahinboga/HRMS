@@ -16,7 +16,7 @@ export default function CityList() {
                 <Table celled selectable inverted color="teal">
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Id</Table.HeaderCell>
+                            <Table.HeaderCell>#</Table.HeaderCell>
                             <Table.HeaderCell>Şehir</Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>

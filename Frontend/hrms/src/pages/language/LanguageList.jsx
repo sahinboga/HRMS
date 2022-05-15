@@ -18,7 +18,7 @@ export default function LanguageList() {
                 <Table celled selectable inverted color="teal">
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Id</Table.HeaderCell>
+                            <Table.HeaderCell>#</Table.HeaderCell>
                             <Table.HeaderCell>Dil</Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>

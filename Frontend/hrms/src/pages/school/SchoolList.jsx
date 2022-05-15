@@ -27,7 +27,7 @@ export default function SchoolList() {
                 <Table celled selectable inverted color="teal">
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Id</Table.HeaderCell>
+                            <Table.HeaderCell>#</Table.HeaderCell>
                             <Table.HeaderCell>Okul</Table.HeaderCell>
                             <Table.HeaderCell></Table.HeaderCell>
                         </Table.Row>
