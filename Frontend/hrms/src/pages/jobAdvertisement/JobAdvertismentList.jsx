@@ -67,7 +67,10 @@ export default function JobAdvertismentList() {
                 <div className="col-md-8 mt-4">
                     <div>
                         {jobAdvertisements?.data.map(jobAdvert => (
-                            <JobAdvertPost jobAdvert={jobAdvert} />
+                            <div key={jobAdvert.id}>
+                                <JobAdvertPost jobAdvert={jobAdvert} />
+                            </div>
+                            
                         ))
                         }
                     </div>
